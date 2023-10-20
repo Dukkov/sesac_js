@@ -1,2 +1,2 @@
 # sesac_js
-Self introduce page written in HTML.
+Some practical code examples for a SeSac JS Web developer course.
