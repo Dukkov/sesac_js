@@ -1,0 +1,27 @@
+div {
+    display: block;
+}
+.photo_container {
+    margin-left:auto;
+    margin-right:auto;
+    width:112px;
+}
+.photo {
+    width: 448px;
+    height: 248px;
+}
+.calendar_container {
+    display: inline-block;
+}
+.info_container {
+    display: inline-block;
+}
+.calendar {
+    border-collapse: collapse;
+}
+.calendar th:first-child, td:first-child {
+    color:red;
+}
+.calendar th:last-child, td:last-child {
+    color:blue;
+}
