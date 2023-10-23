@@ -1,0 +1,21 @@
+p {
+    font-family: 'Tilt Neon', sans-serif;
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 5px;
+    background-color: gold;
+}
+h3 {
+    background-color: gray;
+    border-top: 10px solid red;
+    border-bottom: 10px dotted lime;
+    border-left: 10px double mediumturquoise;
+    height: 200px;
+    background-image: url(../../images/bliss.webp);
+    background-size: cover;
+}
+li {
+    color: brown;
+}

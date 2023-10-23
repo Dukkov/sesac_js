@@ -1,0 +1,25 @@
+div {
+    background-color: gold;
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+}
+.rel {
+    background-color: blueviolet;
+    position: relative;
+    top: 50px;
+    left: 50px;
+    color: white;
+}
+.container {
+    width: 300px;
+    height: 300px;
+    background-image: url(../../images/Black\ cat.jpeg);
+    background-size: 100% 100%;
+    color: white;
+}
+.container p {
+    position: relative;
+    top: 50px;
+    left: 50px;
+}

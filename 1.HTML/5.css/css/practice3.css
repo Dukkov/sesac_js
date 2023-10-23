@@ -1,0 +1,16 @@
+.black {
+    height: 400px;
+    float: right;
+    margin-left: 40px;
+}
+.thumb {
+    height: 400px;
+    float: left;
+    margin-right: 40px;
+}
+.article {
+    font-size: 25px;
+}
+div {
+    border: 3px solid gold;
+}

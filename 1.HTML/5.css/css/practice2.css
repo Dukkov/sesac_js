@@ -1,0 +1,8 @@
+p.short {
+    color: black;
+    background-color: bisque;
+}
+.long {
+    height: 50px;
+    border-style: dotted;
+}
