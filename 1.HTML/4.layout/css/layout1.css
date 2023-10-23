@@ -1,0 +1,13 @@
+.title {
+    background-color: cornflowerblue;
+}
+.menu {
+    float: left;
+    background-color: gold;
+    width: 20%;
+}
+.content_container {
+    float: left;
+    background-color: cornsilk;
+    width: 80%;
+}

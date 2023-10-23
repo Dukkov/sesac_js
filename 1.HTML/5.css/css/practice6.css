@@ -1,0 +1,25 @@
+div {
+    width: 100px;
+    height: 100px;
+    color: white;
+    position: relative;
+}
+.div1 {
+    background-color: red;
+    z-index: 4;
+}
+.div2 {
+    background-color: green;
+    bottom: 50px;
+    z-index: 3;
+}
+.div3 {
+    background-color: blue;
+    bottom: 100px;
+    z-index: 2;
+}
+.div4 {
+    background-color: violet;
+    bottom: 150px;
+    z-index: 1;
+}

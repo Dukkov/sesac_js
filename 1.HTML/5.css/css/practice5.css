@@ -1,0 +1,17 @@
+.bg {
+    height: 500px;
+    background-color: gold;
+}
+.center {
+    background-color: brown;
+}
+.fixed {
+    width: 100px;
+    height:100px;
+    background-color: cornflowerblue;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    background-image: url(../../images/Black\ cat.jpeg);
+    background-size: contain;
+}

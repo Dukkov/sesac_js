@@ -1,0 +1,10 @@
+.container .item {
+    float: left;
+    width: 100px;
+    text-align: center;
+    border-right: 1px solid gray;
+}
+.container .last {
+    float: right;
+    border-right: none;
+}

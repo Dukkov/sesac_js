@@ -1,0 +1,9 @@
+p {
+    width: 400px;
+    height: 200px;
+    border: 5px solid red;
+    overflow: hidden scroll;
+}
+span {
+    color: violet;
+}
