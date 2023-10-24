@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            header {
+                background-color: black;
+                color: white;
+                padding: 10px;
+            }
+            ul {
+                list-style-type: none;
+            }
+            #gnb > li {
+                display: inline-block;
+                margin-right: 15px;
+            }
+            ul li a {
+                color: white;
+                text-decoration: none;
+            }
+            .submenu {
+                display: block;
+                padding: 0px;
+            }
+            #gnb li ul{
+                display: none;
+            }
+            #gnb > li:hover > a {
+                border-bottom: 3px solid white;
+            }
+            #gnb li:hover ul {
+                display: block;
+                border: 1px solid white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul id="gnb">
+                    <li><a href="#">홈</a></li>
+                    <li><a href="#">메뉴1</a>
+                            <ul class="submenu">
+                                <li><a href="#">서브메뉴1-1</a></li>
+                                <li><a href="#">서브메뉴1-2</a></li>
+                                <li><a href="#">서브메뉴1-3</a></li>
+                            </ul>
+                    </li>
+                    <li><a href="#">메뉴2</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴1-1</a></li>
+                            <li><a href="#">서브메뉴1-2</a></li>
+                            <li><a href="#">서브메뉴1-3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">메뉴3</a>
+                        <ul class="submenu">
+                            <li><a href="#">서브메뉴1-1</a></li>
+                            <li><a href="#">서브메뉴1-2</a></li>
+                            <li><a href="#">서브메뉴1-3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h1>페이지 제목</h1>
+            <p>페이지 내용페이지 내용페이지 내용페이지 내용페이지 내용페이지 내용</p>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>

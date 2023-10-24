@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            .square {
+                width: 100px;
+                height: 100px;
+                background-color: gold;
+                transition-property: width, height;
+                transition-duration: 0.3s;
+                transition-timing-function: ease;
+            }
+            .square:hover {
+                width: 150px;
+                height: 150px;
+            }
+            .image {
+                width: 400px;
+                height: 400px;
+                transition-property: transform;
+                transition-duration: 2.0s;
+            }
+            .image:hover {
+                transform: rotate(180deg);
+            }
+            .button {
+                transition-property: color;
+                transition-duration: 0.5s;
+            }
+            .button:hover {
+                color: red;
+            }
+            .gradient {
+                background: linear-gradient(to right, #ff0000, #00ff00);
+                transition-property: background;
+                transition-duration: 3.0s;
+            }
+            .gradient:hover {
+                background: linear-gradient(to right, #00ff00, #0000ff);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="square"></div><br>
+        <button class="button">Hover me</button><br>
+        <img class="image" src="../images/Black cat.jpeg" alt="balck cat"><br>
+        <div class="gradient">Hover me for gradient effect</div>
+    </body>
+</html>
