@@ -1,6 +1,9 @@
 .title {
     background-color: cornflowerblue;
 }
+body {
+    margin: 0;
+}
 .menu {
     float: left;
     background-color: gold;
@@ -9,5 +12,10 @@
 .content_container {
     float: left;
     background-color: cornsilk;
-    width: 80%;
+    width: 70%;
+}
+@media (max-width: 600px) {
+    .menu, .content_container {
+        width: 100%;
+    }
 }
