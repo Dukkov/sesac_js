@@ -40,12 +40,13 @@ html {
     opacity: 0.99;
 }
 .calendar_container {
+    padding-left: 200px;
     font-family: 'Montserrat', sans-serif;
     vertical-align: top;
-    width: 75%;
+    width: 45%;
     height: 520px;
     display: inline-block;
-    color: brown;
+    color: rgb(176, 75, 75);
     /* background-color: silver; */
     font-size: 30px;
 }
@@ -94,11 +95,12 @@ html {
     padding-bottom: 30px;
 }
 .info_container {
+    padding-right: 200px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
-    color: brown;
+    color: rgb(176, 75, 75);
     display: inline-block;
-    width: 25%;
+    width: 20%;
     height: 520px;
     /* background-color: violet; */
 }
