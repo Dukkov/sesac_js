@@ -1,6 +1,10 @@
 h1, h2, h3 {
     margin: 0px;
 }
+a {
+    text-decoration: none;
+    color: rgb(176, 75, 75);
+}
 body {
     font-size: 0;
     margin: 0;
@@ -8,9 +12,6 @@ body {
 html {
     background-color: #f5f5f5;
 }
-/* th, td {
-    border: 1px solid black;
-} */
 .article {
     height: 500px;
 }
@@ -18,6 +19,14 @@ html {
     padding-top: 120px;
     text-align: center;
     background-color: #edecec;
+}
+.photo_container i {
+    margin-left: 80px;
+    margin-right: 80px;
+    font-size: 100px;
+    /* vertical-align: top; */
+    position: relative;
+    bottom: 360px;
 }
 .photo {
     width: 600px;
@@ -29,7 +38,7 @@ html {
 }
 .photo:hover {
     transform: translateY(-120px);
-    transition-duration: 0.8s;
+    transition-duration: 0.5s;
     transition-delay: 0.2s;
     transition-timing-function: ease-in-out;
 }
@@ -38,9 +47,10 @@ html {
     bottom: 350px;
     background-color: #f5f5f5;
     opacity: 0.99;
+    text-align: center;
 }
 .calendar_container {
-    padding-left: 200px;
+    /* padding-left: 300px; */
     font-family: 'Montserrat', sans-serif;
     vertical-align: top;
     width: 45%;
@@ -51,16 +61,18 @@ html {
     font-size: 30px;
 }
 .calendar_container > h1 {
+    text-align: left;
     display: inline-block;
     width: 68%;
     height: 100px;
-    padding-left: 60px;
+    /* padding-left: 60px; */
     /* margin-left: 70px;
     margin-top: 70px;
     margin-right: 820px;
     margin-bottom: 20px; */
 }
 .calendar_container > h2 {
+    text-align: right;
     position: relative;
     top: 10px;
     font-size: 1.3em;
@@ -95,7 +107,8 @@ html {
     padding-bottom: 30px;
 }
 .info_container {
-    padding-right: 200px;
+    text-align: left;
+    /* padding-right: 200px; */
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
     color: rgb(176, 75, 75);
@@ -113,7 +126,7 @@ html {
 .info_container img {
     position: relative;
     top: 30px;
-    left: 100px;
+    left: 170px;
     width: 130px;
     height: 140px;
 }
