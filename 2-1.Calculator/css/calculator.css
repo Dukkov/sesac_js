@@ -17,7 +17,7 @@ a {
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #F3F3F3;
+    background-color: #F6F2F1;
     border-radius: 10px;
     box-shadow: 3px 3px 25px 10px #c4c3c3;
 }
@@ -110,17 +110,18 @@ a {
     font-size: 13px;
     text-align: center;
     width: 15%;
-    background-color: #F3F3F3;
+    background-color: #F6F2F1;
     border: 0;
     border-radius: 5px;
     padding-top: 3px;
     padding-bottom: 3px;
 }
 .memory button:hover {
-    background-color: #e7ebf0;
+    background-color: #F0E8E7;
 }
 .memory button:active {
-    background-color: #f3f3f3;
+    background-color: #F2EBE9;
+    color: #5C5959;
 }
 .num_buttons {
     padding-left: 2px;
@@ -138,15 +139,15 @@ a {
     border-radius: 5px;
 }
 .etcpad {
-    background-color: #FAF8F7;
+    background-color: #FCF8F6;
     border: 1px solid #CECBCB;
     font-size: 14px;
 }
 .etcpad:hover {
-    background-color: #F6F6F6;
+    background-color: #FAF4F2;
 }
 .etcpad:active {
-    background-color: #F2F5F7;
+    background-color: #FAF3F0;
     color: #5C5D5E;
 }
 .numpad {
@@ -154,10 +155,10 @@ a {
     border: 1px solid #CECBCB;
 }
 .numpad:hover {
-    background-color: #fbfcfd;
+    background-color: #FDFBFB;
 }
 .numpad:active {
-    background-color: #F7F9FB;
+    background-color: #FCF8F6;
     color: #5E5F5F;
 }
 .enter {
