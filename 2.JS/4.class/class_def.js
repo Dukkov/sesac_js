@@ -13,7 +13,8 @@ class Car {
 
 const myCar = new Car("KIA", "K5");
 const yourCar = new Car("Audi", "A8");
+console.log(Car._make);
 console.log(myCar._make);
-console.log(myCar.drive());
-console.log(myCar.stop());
-console.log(yourCar.drive());
+// console.log(myCar.drive());
+// console.log(myCar.stop());
+// console.log(yourCar.drive());

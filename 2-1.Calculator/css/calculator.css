@@ -100,6 +100,7 @@ a {
 }
 .display_input {
     font-size: 45px;
+    height: 60px;
 }
 .memory {
     display: flex;
