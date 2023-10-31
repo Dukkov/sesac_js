@@ -5,7 +5,6 @@
         <title>Calculator</title>
         <link rel="stylesheet" href="./css/calculator.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        <script src="calculator.js"></script>
     </head>
     <body>
         <div class="calc_container">
@@ -26,8 +25,8 @@
                 <button class="menu_button" type="button"><i class="fa-solid fa-arrow-rotate-left fa-xl"></i></button>
             </div>
             <div class="display">
-                <div class="display_record">1</div>
-                <div class="display_input">0</div>
+                <div class="display_record" id="record">&nbsp;</div>
+                <div class="display_input" id="input">0</div>
             </div>
             <div class="memory">
                 <button type="button">MC</button>
@@ -40,41 +39,42 @@
             <div class="num_buttons">
                 <div class="button_row first_row">
                     <button class="etcpad" type="button">%</button>
-                    <button class="etcpad" type="button">CE</button>
-                    <button class="etcpad" type="button">C</button>
+                    <button class="etcpad" type="button" onclick="clearInput()">CE</button>
+                    <button class="etcpad" type="button" onclick="clearInput()">C</button>
                     <button class="etcpad" type="button"><i class="fa-solid fa-delete-left fa-xl"></i></button>
                 </div>
                 <div class="button_row second_row">
                     <button class="etcpad" type="button">1/x</button>
                     <button class="etcpad" type="button">x<sup>2</sup></button>
                     <button class="etcpad" type="button"><sup>2</sup>√x</button>
-                    <button class="etcpad operator" type="button">÷</button>
+                    <button class="etcpad operator" type="button" onclick="operatorInput('÷')">÷</button>
                 </div>
                 <div class="button_row third_row">
                     <button class="numpad" type="button" onclick="numInput(7)">7</button>
                     <button class="numpad" type="button" onclick="numInput(8)">8</button>
                     <button class="numpad" type="button" onclick="numInput(9)">9</button>
-                    <button class="etcpad operator" type="button">×</button>
+                    <button class="etcpad operator" type="button" onclick="operatorInput('×')">×</button>
                 </div>
                 <div class="button_row fourth_row">
                     <button class="numpad" type="button" onclick="numInput(4)">4</button>
                     <button class="numpad" type="button" onclick="numInput(5)">5</button>
                     <button class="numpad" type="button" onclick="numInput(6)">6</button>
-                    <button class="etcpad operator" type="button">-</button>
+                    <button class="etcpad operator" type="button" onclick="operatorInput('-')">-</button>
                 </div>
                 <div class="button_row fifth_row">
                     <button class="numpad" type="button" onclick="numInput(1)">1</button>
                     <button class="numpad" type="button" onclick="numInput(2)">2</button>
                     <button class="numpad" type="button" onclick="numInput(3)">3</button>
-                    <button class="etcpad operator" type="button">+</button>
+                    <button class="etcpad operator" type="button" onclick="operatorInput('+')">+</button>
                 </div>
                 <div class="button_row sixth_row">
                     <button class="numpad" type="button">+/-</button>
-                    <button class="numpad" type="button">0</button>
+                    <button class="numpad" type="button" onclick="numInput(0)">0</button>
                     <button class="numpad" type="button">.</button>
                     <button class="enter operator" type="button">=</button>
                 </div>
             </div>
         </div>
+        <script src="calculator.js"></script>
     </body>
 </html>
