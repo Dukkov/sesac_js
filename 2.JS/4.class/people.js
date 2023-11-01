@@ -56,6 +56,10 @@ class Manager extends Employee {
             possessive = "his"
         console.log (`The manager, ${this._name} is now assigning works to ${possessive} team.`);
     }
+
+    greet () {
+        console.log (`Hello. My name is ${this._name}. I'm manager, and ${this._jobTitle} in this company.`);
+    }
 }
 
 class Student extends Person {
@@ -86,6 +90,12 @@ class Customer extends Person {
     }
 }
 
+console.log("==========");
+function introduce(people) {
+    for (const person of people) {
+        person.greet();
+    }
+}
 const person1 = new Person("Mike", 32, "male");
 person1.greet();
 person1.walk();
@@ -107,3 +117,6 @@ student1.walk();
 const customer1 = new Customer("Chris", 30, "male", "C1001", ["order1", "order2"]);
 customer1.placeOrder();
 console.log(customer1.orderInfo);
+
+const people = [person1, employee1, manager1, student1, customer1];
+introduce(people);
