@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/2.JS/2.function/searching.js"
+            "program": "${workspaceFolder}/2.JS/5-3.sortSearch/sorting.js"
         }
     ]
 }
