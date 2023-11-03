@@ -141,7 +141,8 @@ a {
 }
 .etcpad {
     background-color: #FCF8F6;
-    border: 1px solid #CECBCB;
+    border: 1px solid #E1E6EA;
+    border-bottom: 1px solid #C9CDD1;
     font-size: 14px;
 }
 .etcpad:hover {
@@ -153,7 +154,8 @@ a {
 }
 .numpad {
     background-color: #ffffff;
-    border: 1px solid #CECBCB;
+    border: 1px solid #E2E6E8;
+    border-bottom: 1px solid #C9CDCF;
 }
 .numpad:hover {
     background-color: #FDFBFB;

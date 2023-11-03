@@ -6,24 +6,37 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-function treeDir(path) {
-    try {
-        const dirArr = fs.readdir(path, {withFileTypes: true});
-        console.log("hi");
-        for (element of dirArr) {
-            const filePath = `${path}/${element.name}`;
-
-            if (element.isDirectory())
-                treeDir(filePath);
-            else 
-                console.log(filePath);
-        }
-    } catch(e) {
-        console.log("Error");
-    }
-}
-
-rl.question("Input the path: ", (input) => {
-    treeDir(input);
+rl.question("input the path: ", (pathName) => {
+    treeDir(pathName, 0);
     rl.close();
 });
+
+function treeDir(pathName, depth) {
+    const data = fs.readdirSync(pathName, { withFileTypes: true });
+        for (const element of data) {
+            const filePath = `${pathName}/${element.name}`;
+            if (element.isDirectory() && depth == 0) {
+                console.log(`${element.name}[D]`);
+                treeDir(filePath, 1);
+            }
+            else if (element.isDirectory()) {
+                if (depth > 1) {
+                    process.stdout.write("│");
+                    process.stdout.write("  │".repeat(depth - 1));
+                    console.log(`──${element.name}[D]`);
+                }
+                else
+                    console.log(`├─${element.name}[D]`);
+                treeDir(filePath, depth + 1);
+            }
+            else {
+                if (depth > 1) {
+                    process.stdout.write("│");
+                    process.stdout.write("  │".repeat(depth - 1));
+                    console.log(`──${element.name}[F]`);
+                }
+                else
+                    console.log(`├─${element.name}[F]`);
+            }
+        }
+}

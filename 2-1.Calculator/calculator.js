@@ -16,10 +16,18 @@ function numInput(num) {
 }
 
 function operatorInput(operatorSign) {
-    operand1 = parseInt(input.innerText);
+    operand1 = parseFloat(input.innerText);
     record.innerText = input.innerText + operatorSign;
     operator = record.innerText.slice(-1);
     flag = 1;
+}
+
+function invertInput() {
+    input.innerText = parseFloat(input.innerText) * -1;
+}
+
+function dotInput() {
+    input.innerText += ".";
 }
 
 function clearInput() {
@@ -31,7 +39,7 @@ function clearInput() {
 
 function enterInput() {
     if (operator != 0) {
-        operand2 = parseInt(input.innerText);
+        operand2 = parseFloat(input.innerText);
         if (operator != "÷" && operand2 != 0)
             record.innerText += `${operand2}=`;
         switch (operator) {
@@ -46,7 +54,7 @@ function enterInput() {
                 }
                 break;
             case "×":
-                input.innerText = operand1 * operand2;
+                input.innerText = Math.round(operand1 * operand2 * 10) / 10;
                 break;
             case "-":
                 input.innerText = operand1 - operand2;
@@ -55,8 +63,10 @@ function enterInput() {
                 input.innerText = operand1 + operand2;
                 break;
         }
-        calMemory = parseInt(input.innerText);
+        calMemory = parseFloat(input.innerText);
     }
+    else
+        record.innerText = `${input.innerText}=`;
 }
 
 function deleteInput() {
