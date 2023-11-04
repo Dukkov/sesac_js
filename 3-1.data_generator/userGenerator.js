@@ -1,4 +1,4 @@
-import { fs } from "fs";
+import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 class userData {
@@ -11,28 +11,38 @@ class userData {
     }
 
     userNameGenerate() {
+        const userNameFile = fs.readFileSync("./userNameElement.json", {encoding: "utf8"});
+        const userNameData = JSON.parse(userNameFile);
+        const userLastName = userNameData.lastName[Math.floor(Math.random() * 50)];
+        let userFirstName;
         if (this.userGender === "male") {
-            const userNameFile = fs.readFileSync("./userNameElement.json", {encoding: "utf8"});
-            const userNameData = JSON.parse(userNameFile);
+            userFirstName = userNameData.maleFirstName[Math.floor(Math.random() * 96)];
         }
         else {
-
+            userFirstName = userNameData.femaleFirstName[Math.floor(Math.random() * 96)];
         }
+        this.userName = userLastName + userFirstName;
     }
 
-    userAgeGenerate() {
+    // userAgeGenerate() {
 
-    }
+    // }
 
-    userBirthdateGenerate() {
+    // userBirthdateGenerate() {
 
-    }
+    // }
 
-    userAddressGenerate() {
+    // userAddressGenerate() {
 
-    }
+    // }
 
-    toString() {
+    // toString() {
 
-    }
+    // }
 }
+
+const user1 = new userData();
+user1.userGenderGenerate();
+user1.userNameGenerate();
+console.log(user1.userGender);
+console.log(user1.userName);
