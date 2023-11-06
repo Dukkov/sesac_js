@@ -60,11 +60,11 @@ export class userData {
     }
 
     userAddressGenerate() {
-        const cityNameFile = fs.readFileSync("./userAddressElement.json", "utf8");
+        const cityNameFile = fs.readFileSync("./addressElements.json", "utf8");
         const cityNameData = JSON.parse(cityNameFile);
-        this.userAddressCity = cityNameData.city[Math.floor(Math.random() * 18)];
+        this.userAddressCity = cityNameData.city[Math.floor(Math.random() * 30)];
         this.userAddressDistrict = districtOfCity(this.userAddressCity);
-        this.userAddressRoad = (Math.floor(Math.random() * 100) + 1) + (Math.floor(Math.random()) < 0.5 ? "길" : "로");
+        this.userAddressRoad = (Math.floor(Math.random() * 100) + 1) + (Math.random() < 0.5 ? "길" : "로");
         this.userAddressNum = Math.floor(Math.random() * 100) + 1;
         this.userAddress = this.userAddressCity + " " + this.userAddressDistrict + " " + this.userAddressRoad + " " + this.userAddressNum;
     }
