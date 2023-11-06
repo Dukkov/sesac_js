@@ -6,7 +6,7 @@ import { districtOfCity } from "./districtOfCity.js";
 const userNameFile = fs.readFileSync("./userNameElement.json", "utf8");
 const cityNameFile = fs.readFileSync("./addressElements.json", "utf8");
 
-export class userData {
+export class UserData {
     userIdGenerate() {
         this.userId = uuidv4();
     }
@@ -74,7 +74,7 @@ export class userData {
 const userDataArr = [];
 
 for (let i = 0; i < 1000; i++) {
-    const userInstance = new userData();
+    const userInstance = new UserData();
     userInstance.userIdGenerate();
     userInstance.userGenderGenerate();
     userInstance.userNameGenerate();

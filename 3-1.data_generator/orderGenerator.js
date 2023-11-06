@@ -6,7 +6,7 @@ import { dateTo2Digit } from "./dateTo2Digit.js";
 const storeIdFile = fs.readFileSync("./store.csv", "utf8");
 const userIdFile = fs.readFileSync("./user.csv", "utf8");
 
-export class orderData {
+export class OrderData {
     orderIdGenerate() {
         this.orderId = uuidv4();
     }
@@ -42,19 +42,10 @@ export class orderData {
     }
 }
 
-// const order1 = new orderData();
-// order1.orderIdGenerate();
-// order1.orderTimeGenerate();
-// order1.orderStoreIdGenerate();
-// order1.orderUserIdGenerate();
-// console.log(order1.orderId);
-// console.log(order1.orderTime);
-// console.log(order1.storeId);
-// console.log(order1.userId);
 const orderDataArr = [];
 
 for (let i = 0; i < 10000; i++) {
-    const orderInstance = new orderData();
+    const orderInstance = new OrderData();
     orderInstance.orderIdGenerate();
     orderInstance.orderTimeGenerate();
     orderInstance.orderStoreIdGenerate();

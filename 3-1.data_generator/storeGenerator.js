@@ -5,7 +5,7 @@ import { storeNameOfDistrict } from "./storeNameOfDistrict.js";
 
 const storeTypeFile = fs.readFileSync("./storeElements.json", "utf8");
 
-export class storeData {
+export class StoreData {
     storeIdGenerate() {
         this.storeId = uuidv4();
     }
@@ -31,7 +31,7 @@ export class storeData {
 const storeDataArr = [];
 
 for (let i = 0; i < 100; i++) {
-    const storeInstance = new storeData();
+    const storeInstance = new StoreData();
     storeInstance.storeIdGenerate();
     storeInstance.storeAddressGenerate();
     storeInstance.storeTypeGenerate();

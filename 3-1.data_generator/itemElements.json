@@ -1,0 +1,102 @@
+{
+    "menu1" : {
+        "name" : "싸이버거",
+        "type" : "Burger",
+        "price" : 4600
+    },
+    "menu2" : {
+        "name" : "화이트갈릭버거",
+        "type" : "Burger",
+        "price" : 5200
+    },
+    "menu3" : {
+        "name" : "할라피뇨통살버거",
+        "type" : "Burger",
+        "price" : 4800
+    },
+    "menu4" : {
+        "name" : "케이준 양념 감자",
+        "type" : "Side dish",
+        "price" : 3500
+    },
+    "menu5" : {
+        "name" : "한우불고기버거",
+        "type" : "Burger",
+        "price" : 8400
+    },
+    "menu6" : {
+        "name" : "데리버거",
+        "type" : "Burger",
+        "price" : 3300
+    },
+    "menu7" : {
+        "name" : "지파이",
+        "type" : "Side dish",
+        "price" : 4300
+    },
+    "menu8" : {
+        "name" : "밀크쉐이크",
+        "type" : "Beverage",
+        "price" : 2100
+    },
+    "menu9" : {
+        "name" : "스파이시 이탈리안",
+        "type" : "Sub",
+        "price" : 6300
+    },
+    "menu10" : {
+        "name" : "이탈리안 비엠티",
+        "type" : "Sub",
+        "price" : 6100
+    },
+    "menu11" : {
+        "name" : "닥터페퍼",
+        "type" : "Beverage",
+        "price" : 2000
+    },
+    "menu12" : {
+        "name" : "와퍼",
+        "type" : "Burger",
+        "price" : 7100
+    },
+    "menu13" : {
+        "name" : "치즈버거",
+        "type" : "Burger",
+        "price" : 3400
+    },
+    "menu14" : {
+        "name" : "어니언링",
+        "type" : "Side dish",
+        "price" : 2300
+    },
+    "menu15" : {
+        "name" : "빅맥",
+        "type" : "Burger",
+        "price" : 5500
+    },
+    "menu16" : {
+        "name" : "쿼터파운더 치즈",
+        "type" : "Burger",
+        "price" : 5500
+    },
+    "menu17" : {
+        "name" : "스낵랩",
+        "type" : "Side dish",
+        "price" : 3000
+    },
+    "menu18" : {
+        "name" : "치킨너겟",
+        "type" : "Side dish",
+        "price" : 2600
+    },
+    "menu19" : {
+        "name" : "감자튀김",
+        "type" : "Side dish",
+        "price" : 2200
+    },
+    "menu20" : {
+        "name" : "펩시 제로",
+        "type" : "Beverage",
+        "price" : 1800
+    }
+}
