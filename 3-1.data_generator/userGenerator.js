@@ -3,6 +3,9 @@ import { v4 as uuidv4 } from "uuid";
 import { dateOfMonth } from "./dateOfMonth.js";
 import { districtOfCity } from "./districtOfCity.js";
 
+const userNameFile = fs.readFileSync("./userNameElement.json", "utf8");
+const cityNameFile = fs.readFileSync("./addressElements.json", "utf8");
+
 export class userData {
     userIdGenerate() {
         this.userId = uuidv4();
@@ -13,7 +16,6 @@ export class userData {
     }
 
     userNameGenerate() {
-        const userNameFile = fs.readFileSync("./userNameElement.json", "utf8");
         const userNameData = JSON.parse(userNameFile);
         const userLastName = userNameData.lastName[Math.floor(Math.random() * 50)];
         let userFirstName;
@@ -60,7 +62,6 @@ export class userData {
     }
 
     userAddressGenerate() {
-        const cityNameFile = fs.readFileSync("./addressElements.json", "utf8");
         const cityNameData = JSON.parse(cityNameFile);
         this.userAddressCity = cityNameData.city[Math.floor(Math.random() * 30)];
         this.userAddressDistrict = districtOfCity(this.userAddressCity);

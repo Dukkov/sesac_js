@@ -3,6 +3,8 @@ import {v4 as uuidv4} from "uuid";
 import { districtOfCity } from "./districtOfCity.js";
 import { storeNameOfDistrict } from "./storeNameOfDistrict.js";
 
+const storeTypeFile = fs.readFileSync("./storeElements.json", "utf8");
+
 export class storeData {
     storeIdGenerate() {
         this.storeId = uuidv4();
@@ -17,7 +19,6 @@ export class storeData {
     }
 
     storeTypeGenerate() {
-        const storeTypeFile = fs.readFileSync("./storeElements.json", "utf8");
         const storeTypeData = JSON.parse(storeTypeFile);
         this.storeType = storeTypeData.burgerBrand[Math.floor(Math.random() * 8)];
     }
