@@ -1,5 +1,7 @@
 {
+  "name": "data_generator",
   "dependencies": {
+    "lodash": "^4.17.21",
     "uuid": "^9.0.1"
   },
   "type": "module"

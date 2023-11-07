@@ -1,7 +1,7 @@
 import fs from "fs";
 
 export function storeNameOfDistrict(district) {
-    const storeNameFile = fs.readFileSync("./storeElements.json", "utf8");
+    const storeNameFile = fs.readFileSync("./JSON/storeElements.json", "utf8");
     const storeNameData = JSON.parse(storeNameFile);
     switch (district) {
         case "강남구" :

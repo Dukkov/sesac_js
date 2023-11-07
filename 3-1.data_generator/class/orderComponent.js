@@ -1,0 +1,21 @@
+import fs from "fs";
+
+export class OrderComponent {
+    constructor() {
+        const storeIdFile = fs.readFileSync("./csv/store.csv", "utf8");
+        const storeIdData = storeIdFile.split(/\n|\r/);
+        storeIdData.shift();
+        this.storeIdArr = storeIdData.map(data => {
+            const storeIdLine = data.split(",");
+            return storeIdLine[0]; 
+        })
+        
+        const userIdFile = fs.readFileSync("./csv/user.csv", "utf8");
+        const userIdData = userIdFile.split(/\n|\r/);
+        userIdData.shift();
+        this.userIdArr = userIdData.map(data => {
+            const userIdLine = data.split(",");
+            return userIdLine[0]; 
+        })
+    }
+}

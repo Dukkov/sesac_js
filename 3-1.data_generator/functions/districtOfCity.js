@@ -1,7 +1,7 @@
 import fs from "fs";
 
 export function districtOfCity(city) {
-    const districtFile = fs.readFileSync("./addressElements.json", "utf8");
+    const districtFile = fs.readFileSync("./JSON/addressElements.json", "utf8");
     const districtData = JSON.parse(districtFile);
     switch (city) {
         case "서울":
