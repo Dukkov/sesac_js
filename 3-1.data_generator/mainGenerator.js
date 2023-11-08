@@ -6,6 +6,10 @@ import { orderAndItemGenerator } from "./functions/orderAndItemGenerator.js";
 
 userGenerator(1000);
 storeGenerator(100);
-orderGenerator(10000);
+setTimeout(() => {
+    orderGenerator(10000);
+}, 1000);
 itemGenerator(20);
-orderAndItemGenerator(50000);
+setTimeout(() => {
+    orderAndItemGenerator(50000);
+}, 3000);

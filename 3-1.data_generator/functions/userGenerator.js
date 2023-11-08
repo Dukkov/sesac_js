@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import { UserData } from "../class/userData.js";
 import _ from "lodash";
 
@@ -13,6 +14,6 @@ export function userGenerator(num) {
     
     const userDataCsv = userDataArr.map(user => `${user.userId},${user.userName},${user.userGender},${user.userAge},${user.userBirthDate},${user.userAddress}`).join("\n");
     const userDataCsvHeader = "Id,Name,Gender,Age,Birthdate,Address\n";
-    fs.writeFileSync("./csv/user.csv", userDataCsvHeader, "utf8");
-    fs.appendFileSync("./csv/user.csv", userDataCsv, "utf8");
+    fs.writeFileSync(path.join("./csv", "user.csv"), userDataCsvHeader, "utf8");
+    fs.appendFileSync(path.join("./csv", "user.csv"), userDataCsv, "utf8");
 }

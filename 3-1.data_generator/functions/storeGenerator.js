@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import { StoreData } from "../class/storeData.js";
 import _ from "lodash";
 
@@ -13,6 +14,6 @@ export function storeGenerator(num) {
 
     const storeDataCsv = storeDataArr.map(store => `${store.storeId},${store.storeName},${store.storeType},${store.storeAddress}`).join("\n");
     const storeDataCsvHeader = "Id,Name,Type,Address\n";
-    fs.writeFileSync("./csv/store.csv", storeDataCsvHeader, "utf8");
-    fs.appendFileSync("./csv/store.csv", storeDataCsv, "utf8");
+    fs.writeFileSync(path.join("./csv", "store.csv"), storeDataCsvHeader, "utf8");
+    fs.appendFileSync(path.join("./csv", "store.csv"), storeDataCsv, "utf8");
 }

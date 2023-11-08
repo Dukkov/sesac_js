@@ -1,6 +1,6 @@
-import fs from "fs";
 import { v4 as uuidv4} from "uuid";
 import { OrderandItemComponent } from "./orderAndItemComponent.js";
+import _ from "lodash";
 
 export class OrderAndItemData {
     constructor() {
@@ -28,18 +28,19 @@ export class OrderAndItemData {
         this.orderAndItemItemId = this.component.itemDataArr[Math.floor(Math.random() * this.component.itemDataArr.length)];
     }
 }
+// console.time("execution_time");
+// const orderAndItemDataArr = [];
+// const orderAndItemInstance = new OrderAndItemData();
+// const orderAndItemDataCsvHeader = "Id,OrderId,ItemId";
+// fs.writeFileSync("../csv/orderitem.csv", orderAndItemDataCsvHeader, "utf8");
 
-const orderAndItemDataArr = [];
-
-for (let i = 0; i < 5000; i++) {
-    const orderAndItemInstance = new OrderAndItemData();
-    orderAndItemInstance.orderAndItemIdGenerate();
-    orderAndItemInstance.orderIdExtract();
-    orderAndItemInstance.itemIdExtract();
-    orderAndItemDataArr.push(orderAndItemInstance);
-}
-
-const orderAndItemDataCsv = orderAndItemDataArr.map(orderAndItem => `${orderAndItem.orderAndItemId},${orderAndItem.orderAndItemOrderId},${orderAndItem.orderAndItemItemId}`).join("\n");
-const orderAndItemDataCsvHeader = "Id,OrderId,ItemId\n";
-fs.writeFileSync("../csv/orderitem.csv", orderAndItemDataCsvHeader, "utf8");
-fs.appendFileSync("../csv/orderitem.csv", orderAndItemDataCsv, "utf8");
+// for (let i = 0; i < 50000; i++) {
+//     orderAndItemDataArr.push(_.cloneDeep(orderAndItemInstance));
+//     orderAndItemInstance.reset();
+//     if (orderAndItemDataArr.length >= 10000) {
+//         const orderAndItemDataCsv = "\n" + orderAndItemDataArr.map(orderAndItem => `${orderAndItem.orderAndItemId},${orderAndItem.orderAndItemOrderId},${orderAndItem.orderAndItemItemId}`).join("\n");
+//         fs.appendFileSync("../csv/orderitem.csv", orderAndItemDataCsv, "utf8");
+//         orderAndItemDataArr.length = 0;
+//     }
+// }
+// console.timeEnd("execution_time");

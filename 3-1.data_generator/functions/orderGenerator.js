@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import { OrderData } from "../class/orderData.js";
 import _ from "lodash";
 
@@ -13,6 +14,6 @@ export function orderGenerator(num) {
 
     const orderDataCsv = orderDataArr.map(order => `${order.orderId},${order.orderTime},${order.storeId},${order.userId}`).join("\n");
     const orderDataCsvHeader = "Id,OrderAt,StoreId,UserId\n";
-    fs.writeFileSync("./csv/order.csv", orderDataCsvHeader, "utf8");
-    fs.appendFileSync("./csv/order.csv", orderDataCsv, "utf8");
+    fs.writeFileSync(path.join("./csv", "order.csv"), orderDataCsvHeader, "utf8");
+    fs.appendFileSync(path.join("./csv", "order.csv"), orderDataCsv, "utf8");
 }

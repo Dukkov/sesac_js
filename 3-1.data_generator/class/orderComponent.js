@@ -1,8 +1,9 @@
 import fs from "fs";
+import path from "path";
 
 export class OrderComponent {
     constructor() {
-        const storeIdFile = fs.readFileSync("./csv/store.csv", "utf8");
+        const storeIdFile = fs.readFileSync(path.join("./csv", "store.csv"), "utf8");
         const storeIdData = storeIdFile.split(/\n|\r/);
         storeIdData.shift();
         this.storeIdArr = storeIdData.map(data => {
@@ -10,7 +11,7 @@ export class OrderComponent {
             return storeIdLine[0]; 
         })
         
-        const userIdFile = fs.readFileSync("./csv/user.csv", "utf8");
+        const userIdFile = fs.readFileSync(path.join("./csv", "user.csv"), "utf8");
         const userIdData = userIdFile.split(/\n|\r/);
         userIdData.shift();
         this.userIdArr = userIdData.map(data => {

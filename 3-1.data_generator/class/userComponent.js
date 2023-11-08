@@ -1,11 +1,12 @@
 import fs from "fs";
+import path from "path";
 
 export class UserComponent {
     constructor() {
-        const userNameFile = fs.readFileSync("./JSON/userNameElement.json", "utf8");
+        const userNameFile = fs.readFileSync(path.join("./JSON", "userNameElement.json"), "utf8");
         this.userNameData = JSON.parse(userNameFile);
 
-        const cityNameFile = fs.readFileSync("./JSON/addressElements.json", "utf8");
+        const cityNameFile = fs.readFileSync(path.join("./JSON", "addressElements.json"), "utf8");
         this.cityNameData = JSON.parse(cityNameFile);
 
         const today = new Date().toLocaleDateString("ko-KR", {
