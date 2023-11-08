@@ -28,17 +28,3 @@ export class ItemData {
         this.itemUnitPrice = this.component.itemInfoData[itemInfoRandomKey].price;
     }
 }
-
-// const itemDataArr = [];
-
-// for (let i = 0; i < 20; i++) {
-//     const itemInstance = new ItemData();
-//     itemInstance.itemIdGenerate();
-//     itemInstance.itemInfoGenerate();
-//     itemDataArr.push(itemInstance);
-// }
-
-// const itemDataCsv = itemDataArr.map(item => `${item.itemId},${item.itemName},${item.itemType},${item.itemUnitPrice}`).join("\n");
-// const itemDataCsvHeader = "Id,Name,Type,UnitPrice\n";
-// fs.writeFileSync("./csv/item.csv", itemDataCsvHeader, "utf8");
-// fs.appendFileSync("./csv/item.csv", itemDataCsv, "utf8");

@@ -41,7 +41,7 @@ export class UserData {
     }
 
     userAgeGenerate() {
-        this.userAge = Math.floor(Math.random() * 87) + 14;
+        this.userAge = Math.floor(Math.random() * 77) + 14;
     }
 
     userBirthdateGenerate() {

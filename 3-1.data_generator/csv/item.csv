@@ -1,21 +1,21 @@
 Id,Name,Type,UnitPrice
-baabe4e9-e409-45a9-9635-a5a9d1cf59f2,밀크쉐이크,Beverage,2100
-7473a90f-fc74-4250-a9d5-70b6b726e6bb,펩시 제로,Beverage,1800
-06dfa51a-2688-487e-ad93-b7171299cdbc,싸이버거,Burger,4600
-5d877220-e5f2-42f0-a2e9-3aad191d1200,데리버거,Burger,3300
-8170f7e3-143d-4874-9901-0a40eba67940,한우불고기버거,Burger,8400
-ff6b4b97-5b98-459e-9cb3-240d12042e8d,데리버거,Burger,3300
-20ab4c10-85a7-468a-9eae-512180fea26a,케이준 양념 감자,Side dish,3500
-ef0a2211-965d-40df-a946-fc9622190dfe,펩시 제로,Beverage,1800
-422f1526-f2e6-4fa1-97e6-f00fed94af6f,와퍼,Burger,7100
-2c21d6cf-65d9-46a4-a8f3-a02a0da1674f,할라피뇨통살버거,Burger,4800
-09b1dc7d-9231-46e7-9345-fa1dce769979,밀크쉐이크,Beverage,2100
-9f9b2605-127c-440e-a603-57942589b1bf,스낵랩,Side dish,3000
-0ba2d958-72f5-4f8b-8252-ccbb4a6baf9f,빅맥,Burger,5500
-ce0f2570-4fe0-4820-b75f-2f1d5ece3846,빅맥,Burger,5500
-89bee97b-76d3-4785-801f-f32b663702f6,닥터페퍼,Beverage,2000
-72b422df-1377-44aa-ab93-b971355d3c98,빅맥,Burger,5500
-d2035dab-19da-4aa3-ac96-a48350181cf1,할라피뇨통살버거,Burger,4800
-ad946052-8671-4498-8c41-f7a8431d5997,치킨너겟,Side dish,2600
-764a4aa2-01a8-40e0-9dd2-d904ba1a085f,닥터페퍼,Beverage,2000
-52996b68-2d46-404f-8b9d-d5d53020138b,화이트갈릭버거,Burger,5200
+54938525-b992-4594-9544-d8356857d9b6,어니언링,Side dish,2300
+1756b205-913d-41b0-bc62-a256f9559169,스파이시 이탈리안,Sub,6300
+64edda24-197c-4e8d-b6c9-9e072fa64a45,쿼터파운더 치즈,Burger,5500
+61234bd5-f65d-4c03-bbc6-eec44e70c213,닥터페퍼,Beverage,2000
+445b81c7-7621-4527-b8a0-6b963d6541af,화이트갈릭버거,Burger,5200
+ce55dd32-5895-4c53-ba46-c6e74c60249d,빅맥,Burger,5500
+e0737cf3-d403-4d36-8a36-dabd30990ba9,빅맥,Burger,5500
+e3fa1888-237f-4660-8255-23ea586bd102,이탈리안 비엠티,Sub,6100
+a681f2fb-4883-4f0d-884a-83df0d6f0324,치킨너겟,Side dish,2600
+9598aab6-a55b-4a3d-b557-016f2ae12bb6,쿼터파운더 치즈,Burger,5500
+51484f3b-b026-4a8b-873b-ed0374407e38,케이준 양념 감자,Side dish,3500
+e50a37c6-0ad8-4a5a-8ff8-89bdb501ff4f,닥터페퍼,Beverage,2000
+3cd17ba5-f656-4616-99d8-b30ef268907f,스파이시 이탈리안,Sub,6300
+bc65e67c-5bce-44e3-a378-889ecd764554,와퍼,Burger,7100
+e8d6cd0c-9873-4a4c-830e-ad32f91f0687,이탈리안 비엠티,Sub,6100
+f503825b-9d45-43d3-a66e-1b3b1b407be0,어니언링,Side dish,2300
+19706176-6932-42ae-84bf-3833ae2be9f7,와퍼,Burger,7100
+0ab30b61-6553-45db-9254-f78515e9abf3,할라피뇨통살버거,Burger,4800
+6b29d95a-bfed-47e8-9582-352423eb22ac,펩시 제로,Beverage,1800
+b858f7ac-b6fe-4625-88d7-b3cffc434d0f,화이트갈릭버거,Burger,5200
