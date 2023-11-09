@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
 
-export class OrderandItemComponent {
+// order.csv, item.csv 파일을 읽고 orderID, itemID만 추출해서 배열로 저장하는 클래스
+export class OrderAndItemComponent {
     constructor() {
         const orderInfoFile = fs.readFileSync(path.join("./csv", "order.csv"), "utf8");
         const orderData = orderInfoFile.split(/\n|\r/);

@@ -1,5 +1,6 @@
 import fs from "fs";
 
+// 입력된 지역구에 속하는 랜덤한 점포명을 반환하는 함수
 export function storeNameOfDistrict(district) {
     const storeNameFile = fs.readFileSync("./JSON/storeElements.json", "utf8");
     const storeNameData = JSON.parse(storeNameFile);

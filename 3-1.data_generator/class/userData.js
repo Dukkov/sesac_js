@@ -3,6 +3,7 @@ import { dateOfMonth } from "../functions/dateOfMonth.js";
 import { districtOfCity } from "../functions/districtOfCity.js";
 import { UserComponent } from "./userComponent.js";
 
+// UserComponent를 이용해 랜덤한 userName, userAddress, userBirthdate를 생성하는 메소드들로 이루어진 클래스
 export class UserData {
     constructor() {
         this.component = new UserComponent();
@@ -30,6 +31,7 @@ export class UserData {
         this.userGender = Math.random() < 0.5 ? "Male" : "Female";
     }
 
+    // userGender를 기반으로 userName을 생성하는 메소드
     userNameGenerate() {
         const userLastName = this.component.userNameData.lastName[Math.floor(Math.random() * 50)];
         let userFirstName;
@@ -44,6 +46,7 @@ export class UserData {
         this.userAge = Math.floor(Math.random() * 77) + 14;
     }
 
+    // userAge와 오늘 날짜를 기준으로 userBirthdate 범위를 정하고, 그 범위 안에서 랜덤한 생년월일을 생성하는 메소드
     userBirthdateGenerate() {
         this.userBirthYear = Math.random() < 0.5 ? this.component.todayYear - this.userAge : this.component.todayYear - this.userAge - 1;
         if (this.userBirthYear == this.component.todayYear - this.userAge) {
@@ -65,6 +68,7 @@ export class UserData {
         this.userBirthDate = `${this.userBirthYear}-${String(this.userBirthMonth).padStart(2, "0")}-${String(this.userBirthDay).padStart(2, "0")}`;
     }
 
+    // UserComponent에 저장된 도시 정보를 기반으로 지역구, 상세주소를 생성하는 메소드
     userAddressGenerate() {
         this.userAddressCity = this.component.cityNameData.city[Math.floor(Math.random() * 30)];
         this.userAddressDistrict = districtOfCity(this.userAddressCity);

@@ -1,5 +1,6 @@
 import fs from "fs";
 
+// 도시이름을 받아서 그 도시에 속하는 랜덤한 지역구를 반환하는 함수
 export function districtOfCity(city) {
     const districtFile = fs.readFileSync("./JSON/addressElements.json", "utf8");
     const districtData = JSON.parse(districtFile);

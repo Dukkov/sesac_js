@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { ItemComponent } from "./itemComponent.js";
 
-
+// ItemComponent를 이용해 랜덤한 item을 뽑아 저장하는 메소드로 이루어진 클래스
 export class ItemData {
     constructor() {
         this.component = new ItemComponent();
@@ -21,6 +21,7 @@ export class ItemData {
         this.itemId = uuidv4();
     }
 
+    // ItemComponent에서 랜덤한 item 키 값을 가져와서 item을 생성하는 메소드
     itemInfoGenerate() {
         const itemInfoRandomKey = this.component.itemInfoKeys[Math.floor(Math.random() * this.component.itemInfoKeys.length)];
         this.itemName = this.component.itemInfoData[itemInfoRandomKey].name;

@@ -1,3 +1,4 @@
+// month를 받아서 해당 월의 일수를 반환하는 함수
 export function dateOfMonth(month) {
     switch (parseInt(month)) {
         case 1:
