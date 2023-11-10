@@ -32,4 +32,13 @@ export class OrderAndItemData {
     itemIdExtract() {
         this.orderAndItemItemId = this.component.itemDataArr[Math.floor(Math.random() * this.component.itemDataArr.length)];
     }
+
+    // OrderAndItemData 인스턴스 내부 변수값을 객체로 반환하는 메소드
+    getOrderAndItemData() {
+        return {
+            orderAndItemId: this.orderAndItemId,
+            orderAndItemOrderId: this.orderAndItemOrderId,
+            orderAndItemItemId: this.orderAndItemItemId
+        };
+    }
 }

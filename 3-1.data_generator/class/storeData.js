@@ -44,4 +44,14 @@ export class StoreData {
     storeNameGenerate() {
         this.storeName = `${this.storeType} ${storeNameOfDistrict(this.storeAddressDistrict)}`;
     }
+
+    // StoreData 인스턴스 내부 변수값을 객체로 반환하는 메소드
+    getStoreData() {
+        return {
+            storeId: this.storeId,
+            storeName: this.storeName,
+            storeType: this.storeType,
+            storeAddress: this.storeAddress
+        };
+    }
 }

@@ -28,4 +28,14 @@ export class ItemData {
         this.itemType = this.component.itemInfoData[itemInfoRandomKey].type;
         this.itemUnitPrice = this.component.itemInfoData[itemInfoRandomKey].price;
     }
+
+    // ItemData 인스턴스 내부 변수값을 객체로 반환하는 메소드
+    getItemData() {
+        return {
+            itemId: this.itemId,
+            itemName: this.itemName,
+            itemType: this.itemType,
+            itemUnitPrice: this.itemUnitPrice
+        };
+    }
 }

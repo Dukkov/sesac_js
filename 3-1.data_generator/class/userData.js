@@ -76,4 +76,16 @@ export class UserData {
         this.userAddressNum = Math.floor(Math.random() * 100) + 1;
         this.userAddress = `${this.userAddressCity} ${this.userAddressDistrict} ${this.userAddressRoad} ${this.userAddressNum}`;
     }
+
+    // UserData 인스턴스 내부 변수값을 객체로 반환하는 메소드
+    getUserData() {
+        return {
+            userId: this.userId,
+            userName: this.userName,
+            userGender: this.userGender,
+            userAge: this.userAge,
+            userBirthDate: this.userBirthDate,
+            userAddress: this.userAddress
+        };
+    }
 }

@@ -45,4 +45,14 @@ export class OrderData {
     orderUserIdExtract() {
         this.userId = this.component.userIdArr[Math.floor(Math.random() * this.component.userIdArr.length)];
     }
+
+    // OrderData 인스턴스 내부 변수값을 객체로 반환하는 메소드
+    getOrderData() {
+        return {
+            orderId: this.orderId,
+            orderTime: this.orderTime,
+            storeId: this.storeId,
+            userId: this.userId
+        };
+    }
 }
