@@ -7,9 +7,9 @@ import { orderAndItemGenerator } from "./functions/orderAndItemGenerator.js";
 async function mainGenerator() {
     console.time("test: ");
     await userGenerator(1000);
-    await storeGenerator(100)
+    await storeGenerator(100);
     await orderGenerator(10000);
-    await itemGenerator(20)
+    await itemGenerator(20);
     await orderAndItemGenerator(50000);
     console.timeEnd("test: ");
 }
