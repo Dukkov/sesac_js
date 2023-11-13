@@ -8,9 +8,9 @@ async function mainGenerator() {
     console.time("test: ");
     await userGenerator(1000);
     await storeGenerator(100)
-        .then(orderGenerator(10000));
+    await orderGenerator(10000);
     await itemGenerator(20)
-        .then(orderAndItemGenerator(50000));
+    await orderAndItemGenerator(50000);
     console.timeEnd("test: ");
 }
 
