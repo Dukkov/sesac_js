@@ -4,9 +4,23 @@
         <meta charset="UTF-8">
         <title>Dukov Home</title>
     </head>
-
     <body>
-        <a href="/favorite"><b>좋아하는 것</b></a><br>
-        <h1>Welcome! 환영합니다.</h1>
+        <nav>
+            <a href="/favorite"><b>좋아하는 것</b></a><br>
+            <a href="/user">User</a>
+        </nav>
+        <section>
+            <h1>Welcome! 환영합니다.</h1>
+            <p>Hello Server1</p>
+        </section>
+        <section>
+            <h2>Users!</h2>
+            <form id="form" action="/user" method="post">
+                <input type="text" name="name" id="username">
+                <input type="submit" value="Submit">
+            </form>
+            <div id="userTable"></div>
+        </section>
+        <script src="static/user.js"></script>
     </body>
 </html>
