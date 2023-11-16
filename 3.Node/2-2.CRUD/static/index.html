@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>CRUD</title>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="/static/style.css">
     </head>
     <body>
         <nav>
             <ul>
-                <a href=""><li>About</li></a>
-                <a href=""><li>Users</li></a>
+                <a href="/about"><li>About</li></a>
+                <a href="/user"><li>Users</li></a>
             </ul>
         </nav>
         <section>
@@ -18,11 +18,11 @@
         </section>
         <section>
             <h2>Users</h2>
-            <form>
-                <input type="text">
+            <form id="form" action="/user" method="post">
+                <input type="text" name="userName" id="inputBox">
                 <input type="submit" value="Submit">
             </form>
         </section>
-        <script src="./mainScript.js"></script>
+        <script src="/static/mainScript.js"></script>
     </body>
 </html>

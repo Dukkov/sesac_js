@@ -62,7 +62,7 @@ const server = http.createServer(async (req, res) => {
                     const formData = JSON.parse(body);
                     console.log(formData);
                     const username = formData.name;
-                    users[username] = username;
+                    users[Date.now()] = username;
                 });
             }
             res.writeHead(OK, { "Content-Type": "text/plain" });
@@ -84,7 +84,7 @@ const server = http.createServer(async (req, res) => {
         else if (req.method === "PUT") {
             try {
                 if (req.url.startsWith("/user/")) {
-                    const targetKey = req.url.substring(6);
+                    const targetKey = req.url.split("/")[2];
                     delete users[targetKey];
                     let body = "";
                     req.on("data", (data) => {
@@ -92,11 +92,12 @@ const server = http.createServer(async (req, res) => {
                     });
                     req.on("end", () => {
                         const reqData = JSON.parse(body);
+                        console.log(reqData);
                         users[reqData.name] = reqData.name;
+                        res.writeHead(OK, { "Content-Type": "text/plain" });
+                        res.end("Modify done");
                     });
                 }
-                res.writeHead(OK, { "Content-Type": "text/plain" });
-                res.end("Modify done");
             } catch (err) {
                 res.writeHead(INTERNAL_ERROR, { "Content-Type": "text/plain" });
                 res.end("Internal server error");
