@@ -1,0 +1,6 @@
+#userTable {
+    width: 100%;
+}
+#userTable th {
+    background-color: gray;
+}

@@ -23,13 +23,25 @@ app.get("/user", (req, resp) => {
 });
 
 app.post("/user", (req, resp) => {
-    console.log(req.body);
     const jsonData = req.body;
-    console.log(jsonData);
     const id = Date.now();
 
     users[id] = jsonData.newName;
     resp.status(200).send("Post done");
+});
+
+app.put("/user/:id", (req, resp) => {
+    const uid = req.params.id;
+
+    users[uid] = req.body.name;
+    resp.status(200).send("Modify done");
+});
+
+app.delete("/user/:id", (req, resp) => {
+    const uid = req.params.id;
+
+    delete users[uid];
+    resp.status(200).send("Delete done");
 });
 
 app.listen(port, () => {

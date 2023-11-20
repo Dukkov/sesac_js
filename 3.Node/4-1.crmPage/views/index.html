@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>사용자 테이블</h1>
+        <table id = "userTable">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Birthdate</th>
+            </tr>
+            {% for user in userDataJson %}
+                <tr>
+                    <td>{{ user.Id }}</td>
+                    <td>{{ user.Name }}</td>
+                    <td>{{ user.Gender }}</td>
+                    <td>{{ user.Age }}</td>
+                    <td>{{ user.Birthdate }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
