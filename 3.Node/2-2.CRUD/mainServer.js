@@ -56,10 +56,11 @@ const mainServer = http.createServer(async (req, resp) => {
                 if (req.url === "/user") {
                     let body = "";
                     req.on("data", (data) => { body += data });
-                    req.on("end", () => {
-                        // console.log(body);
+                    req.on("end", async () => {
+                        console.log(body);
                         const userJson = JSON.parse(body);
-                        users[Date.now()] = userJson.name;
+                        console.log("HI " + userJson);
+                        users[Date.now()] = userJson.newName;
                         resp.writeHead(OK, { "Content-Type": "text/plain" });
                         resp.end("Post done");
                     });

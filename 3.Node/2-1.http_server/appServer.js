@@ -93,7 +93,7 @@ const server = http.createServer(async (req, res) => {
                     req.on("end", () => {
                         const reqData = JSON.parse(body);
                         console.log(reqData);
-                        users[reqData.name] = reqData.name;
+                        users[Date.now()] = reqData.name;
                         res.writeHead(OK, { "Content-Type": "text/plain" });
                         res.end("Modify done");
                     });

@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     await updateTable();
 
     form.addEventListener("submit", async (ev) => {
+        //submit 이벤트가 발생하면 form 의 action, method 속성을 이용해 서버로 데이터 전송함
+        //또한 페이지가 reload 되는데, 이 일련의 작동을 막기 위해 ev.preventDefault() 사용.
         ev.preventDefault();
         const name = userName.value;
         console.log("test:" + name);
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch("/user", {
                 method: "POST",
-                header: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({name})
             });
 
