@@ -3,6 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputBox = document.getElementById("inputBox");
 
     form.addEventListener("submit", (ev) => {
-
+        
     })
 })
