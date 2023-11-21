@@ -1,6 +1,24 @@
 #userTable {
     width: 100%;
+    border-collapse: collapse;
 }
 #userTable th {
-    background-color: gray;
+    background-color: rgb(227, 227, 227);
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid gray;
+}
+.pagination {
+    padding-top: 10px;
+}
+.pageButton {
+    width: 30px;
+    height: 30px;
+}
+.active input {
+    background-color: rgb(12, 195, 12);
+    color: white;
+    border: 1px solid #000;
 }
