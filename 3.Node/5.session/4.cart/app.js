@@ -6,10 +6,10 @@ const app = express();
 const port = 3000;
 const __dirname = path.resolve();
 const products = [
-    { id: 1, name: "Twix", price: 1200 },
-    { id: 2, name: "Bbeong", price: 1400 },
-    { id: 3, name: "Oreo", price: 1800 },
-    { id: 4, name: "Pocky", price: 2000 }
+    { id: 1, name: "Twix", price: 1200, qty: 0 },
+    { id: 2, name: "Bbeong", price: 1400, qty: 0 },
+    { id: 3, name: "Oreo", price: 1800, qty: 0 },
+    { id: 4, name: "Pocky", price: 2000, qty: 0 }
 ];
 
 app.use(session({
@@ -35,48 +35,18 @@ app.get("/cart", (req, resp) => {
 
 app.get("/cartInfo", (req, resp) => {
     const cart = req.session.cart || [];
-    const newCart = [];
-    const cartMap = new Map();
 
-    cart.forEach(element => {
-        if (cartMap.has(element.id))
-            cartMap.set(element.id, cartMap.get(element.id) + 1);
-        else
-            cartMap.set(element.id, 0);
-    });
-
-    for (let i = 0; i < products.length; i++) {
-        newCart.push({
-            id: products[i].id,
-            name: products[i].name,
-            price: products[i].price,
-            quantity: cartMap.get(products[i].id)
-        });
-    }
     resp.json(cart);
 });
 
-app.get("/cartMap", (req, resp) => {
+app.get("/cartTotal", (req, resp) => {
     const cart = req.session.cart || [];
-    const newCart = [];
-    const cartMap = new Map();
+    const total = cart.reduce((accumulator, product) => {
+        return accumulator + (product.price * product.qty);
+    }, 0);
 
-    cart.forEach(element => {
-        if (cartMap.has(element.id))
-            cartMap.set(element.id, cartMap.get(element.id) + 1);
-        else
-            cartMap.set(element.id, 1);
-    });
-
-    for (let i = 0; i < products.length; i++) {
-        newCart.push({
-            id: products[i].id,
-            name: products[i].name,
-            price: products[i].price,
-            quantity: cartMap.get(products[i].id)
-        });
-    }
-    resp.json(newCart);
+    console.log(total);
+    resp.json({ total: total });
 });
 
 app.post("/addCart/:productId", (req, resp) => {
@@ -88,14 +58,43 @@ app.post("/addCart/:productId", (req, resp) => {
 
     const cart = req.session.cart || [];
 
-    cart.push({
-        id: product.id,
-        name: product.name,
-        price: product.price
-    });
+    if (cart.length === 0 || !cart.some((c) => c.id === product.id)) {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            qty: (product.qty + 1)
+        });
+    }
+    else {
+        const targetProduct = cart.find((c) => c.id === product.id);
+        targetProduct.qty++;
+    }
 
-    req.session.cart = cart;
+    req.session.cart = cart.sort((a, b) => a.id - b.id);
     resp.json({ message: "The product added to cart" });
+});
+
+app.put("/adjustCart/:productId", (req, resp) => {
+    const cart = req.session.cart || [];
+    const adjust = parseInt(req.body.adjust);
+    const targetProduct = cart.find((c) => c.id === parseInt(req.params.productId));
+    targetProduct.qty += adjust;
+
+    if (targetProduct.qty < 0)
+        targetProduct.qty = 0;
+
+    req.session.cart = cart.sort((a, b) => a.id - b.id);
+    resp.json({ message: "Qty adjust done" });
+});
+
+app.delete("/dropCart/:productId", (req, resp) => {
+    const productId = parseInt(req.params.productId);
+    let cart = req.session.cart || [];
+    cart = cart.filter((element) => element.id !== productId);
+
+    req.session.cart = cart.sort((a, b) => a.id - b.id);
+    resp.json({ message: "Remove Done" });
 });
 
 app.listen(port, () =>{

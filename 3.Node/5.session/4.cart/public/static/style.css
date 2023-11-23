@@ -11,3 +11,6 @@ th, td {
 td {
     text-align: center;
 }
+.adjustBtn {
+    margin: 6px;
+}

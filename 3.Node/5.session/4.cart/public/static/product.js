@@ -41,7 +41,7 @@ window.addToCart = (id) => {
     fetch(`/addCart/${id}`, { method: "POST" })
         .then(resp => resp.json())
         .then(data => {
-            console.log(id);
             alert(data.message);
         })
+        .catch(err => console.error(err));
 };
