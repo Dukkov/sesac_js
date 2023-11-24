@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="static/style.css">
+    </head>
+    <body>
+        <h1>Welcome to CVS!</h1>
+        <p>We offer many numbers of snacks.</p>
+        <section id="mainArticle">
+            <h2>Login</h2>
+            <form id="loginForm" onsubmit="loginToCvs(event)">
+                <div>
+                    <label for="inputUsername">Username: </label>
+                    <input type="text" name="username" id="inputUsername">
+                </div>
+                <div>
+                    <label for="inputPassword">Password: </label>
+                    <input type="password" name="password" id="inputPassword">
+                </div>
+                <input type="submit" value="Login">
+            </form>
+        </section>
+        <script src="static/index.js"></script>
+    </body>
+</html>

@@ -11,6 +11,12 @@ const products = [
     { id: 3, name: "Oreo", price: 1800, qty: 0 },
     { id: 4, name: "Pocky", price: 2000, qty: 0 }
 ];
+const users = [
+    { id: 1, username: "dukov", password: "1111" },
+    { id: 2, username: "marine", password: "assei" },
+    { id: 2, username: "yanggang", password: "kawai" },
+    { id: 2, username: "admin", password: "qwer1234" }
+];
 
 app.use(session({
     secret: "myKey",
@@ -21,11 +27,27 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "public", "views"));
+
 app.get("/", (req, resp) => {
+    resp.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.get("/api/userInfo", (req, resp) => {
+    const user = req.session.user;
+
+    if (user)
+        resp.json({ username: user.username });
+    else
+        resp.json({ message: "There's no user" });
+});
+
+app.get("/product", (req, resp) => {
     resp.sendFile(path.join(__dirname, "public", "product.html"));
 });
 
-app.get("/products", (req, resp) => {
+app.get("/api/products", (req, resp) => {
     resp.json(products);
 });
 
@@ -33,13 +55,13 @@ app.get("/cart", (req, resp) => {
     resp.sendFile(path.join(__dirname, "public", "cart.html"));
 });
 
-app.get("/cartInfo", (req, resp) => {
+app.get("/api/cartInfo", (req, resp) => {
     const cart = req.session.cart || [];
 
     resp.json(cart);
 });
 
-app.get("/cartTotal", (req, resp) => {
+app.get("/api/cartTotal", (req, resp) => {
     const cart = req.session.cart || [];
     const total = cart.reduce((accumulator, product) => {
         return accumulator + (product.price * product.qty);
@@ -49,7 +71,20 @@ app.get("/cartTotal", (req, resp) => {
     resp.json({ total: total });
 });
 
-app.post("/addCart/:productId", (req, resp) => {
+app.post("/api/login", (req, resp) => {
+    const { username, password } = req.body;
+    const user = users.find((u) => u.username === username && u.password === password);
+
+    if (user) {
+        req.session.user = user;
+        resp.json({ message: "Login Success. Welcome!" });
+    }
+    else {
+        resp.status(401).json({ message: "Login failed. Try again" });
+    }
+});
+
+app.post("/api/addCart/:productId", (req, resp) => {
     const productId = parseInt(req.params.productId);
     const product = products.find((p) => p.id === productId);
 
@@ -75,7 +110,7 @@ app.post("/addCart/:productId", (req, resp) => {
     resp.json({ message: "The product added to cart" });
 });
 
-app.put("/adjustCart/:productId", (req, resp) => {
+app.put("/api/adjustCart/:productId", (req, resp) => {
     const cart = req.session.cart || [];
     const adjust = parseInt(req.body.adjust);
     const targetProduct = cart.find((c) => c.id === parseInt(req.params.productId));
@@ -88,7 +123,7 @@ app.put("/adjustCart/:productId", (req, resp) => {
     resp.json({ message: "Qty adjust done" });
 });
 
-app.delete("/dropCart/:productId", (req, resp) => {
+app.delete("/api/dropCart/:productId", (req, resp) => {
     const productId = parseInt(req.params.productId);
     let cart = req.session.cart || [];
     cart = cart.filter((element) => element.id !== productId);

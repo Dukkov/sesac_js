@@ -3,33 +3,44 @@ const cartTableBody = document.getElementById("cartTableBody");
 const updateCartPage = () => {
     cartTableBody.innerHTML = "";
 
-    fetch("/cartInfo")
+    fetch("/api/cartInfo")
     .then(resp => resp.json())
     .then(data => {
-        for (row of data) {
-            if (parseInt(row.qty) > 0) {
-                const cartTableRow = document.createElement("tr");
-                const cartTableId = createTableCell(row.id);
-                const cartTableName = createTableCell(row.name);
-                const cartTablePrice = createTableCell(row.price);
-                const cartTableQty = createTableCell(row.qty);
-                const cartTablePlusQty = createAdjustBtn("+", plusQty, row.id);
-                const cartTableMinusQty = createAdjustBtn("-", minusQty, row.id);
-                const cartTableBtn = createTableBtn("Remove", rmFromCart, row.id);
-
-                cartTableQty.appendChild(cartTablePlusQty);
-                cartTableQty.appendChild(cartTableMinusQty);
-                cartTableRow.appendChild(cartTableId);
-                cartTableRow.appendChild(cartTableName);
-                cartTableRow.appendChild(cartTablePrice);
-                cartTableRow.appendChild(cartTableQty);
-                cartTableRow.appendChild(cartTableBtn);
-                cartTableBody.appendChild(cartTableRow);
-            }
+        if (data.length === 0) {
+            const cartTableRow = document.createElement("tr");
+            const cartTableAlert = createTableCell("Your cart is currently empty!");
+            cartTableAlert.colSpan = 5;
+            cartTableAlert.style.padding = "10px 0";
+            cartTableAlert.style.fontWeight = "bold";
+            cartTableRow.appendChild(cartTableAlert);
+            cartTableBody.appendChild(cartTableRow);
         }
-        const cartTableTotal = document.getElementById("cartTableTotal");
-        getCartTotal()
-            .then(total => cartTableTotal.textContent = total);
+        else {
+            for (row of data) {
+                if (parseInt(row.qty) > 0) {
+                    const cartTableRow = document.createElement("tr");
+                    const cartTableId = createTableCell(row.id);
+                    const cartTableName = createTableCell(row.name);
+                    const cartTablePrice = createTableCell(row.price);
+                    const cartTableQty = createTableCell(row.qty);
+                    const cartTablePlusQty = createAdjustBtn("+", plusQty, row.id);
+                    const cartTableMinusQty = createAdjustBtn("-", minusQty, row.id);
+                    const cartTableBtn = createTableBtn("Remove", rmFromCart, row.id);
+    
+                    cartTableQty.appendChild(cartTablePlusQty);
+                    cartTableQty.appendChild(cartTableMinusQty);
+                    cartTableRow.appendChild(cartTableId);
+                    cartTableRow.appendChild(cartTableName);
+                    cartTableRow.appendChild(cartTablePrice);
+                    cartTableRow.appendChild(cartTableQty);
+                    cartTableRow.appendChild(cartTableBtn);
+                    cartTableBody.appendChild(cartTableRow);
+                }
+            }
+            const cartTableTotal = document.getElementById("cartTableTotal");
+            getCartTotal()
+                .then(total => cartTableTotal.textContent = total);
+        }
     })
     .catch(err => console.error(err));
 }
@@ -60,7 +71,7 @@ const createAdjustBtn = (value, onclick, id) => {
 };
 
 const plusQty = (id) => {
-    fetch(`/adjustCart/${id}`, {
+    fetch(`/api/adjustCart/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ adjust : 1 })
@@ -73,7 +84,7 @@ const plusQty = (id) => {
 }
 
 const minusQty = (id) => {
-    fetch(`/adjustCart/${id}`, {
+    fetch(`/api/adjustCart/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ adjust : -1 })
@@ -87,7 +98,7 @@ const minusQty = (id) => {
 
 const rmFromCart = (id) => {
     if (confirm("Are you sure you want to remove the item from your cart?")) {
-        fetch(`/dropCart/${id}`, { method: "DELETE" })
+        fetch(`/api/dropCart/${id}`, { method: "DELETE" })
             .then(resp => resp.json())
             .then(data => {
                 alert(data.message);
@@ -98,7 +109,7 @@ const rmFromCart = (id) => {
 };
 
 const getCartTotal = () => {
-    return fetch("/cartTotal")
+    return fetch("/api/cartTotal")
         .then(resp => resp.json())
         .then(data => {
             console.log(data.total);

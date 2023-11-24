@@ -1,0 +1,20 @@
+doctype html
+html(lang="ko")
+  head
+    meta(charset="utf-8")
+    title Home
+    link(rel="stylesheet", href="static/style.css")
+  body
+    h1 Welcome to CVS!
+    p We offer many numbers of snacks.
+    section#mainArticle
+      h2 Login
+      form#loginForm(onsubmit="loginToCvs(event)")
+        div
+          label(for="inputUsername") Username:
+          input(type="text", name="username", id="inputUsername")
+        div
+          label(for="inputPassword") Password:
+          input(type="password", name="password", id="inputPassword")
+        input(type="submit", value="Login")
+  script(src="static/index.js")

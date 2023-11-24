@@ -1,6 +1,6 @@
 const productTableBody = document.getElementById("productTableBody");
 
-fetch("/products")
+fetch("/api/products")
     .then(resp => resp.json())
     .then(data => {
         for (row of data) {
@@ -38,7 +38,7 @@ window.createTableBtn = (value, btnId) => {
 };
 
 window.addToCart = (id) => {
-    fetch(`/addCart/${id}`, { method: "POST" })
+    fetch(`/api/addCart/${id}`, { method: "POST" })
         .then(resp => resp.json())
         .then(data => {
             alert(data.message);
