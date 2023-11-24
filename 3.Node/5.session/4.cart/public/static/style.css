@@ -1,3 +1,21 @@
+body {
+    margin: 0;
+}
+ul {
+    padding: 0;
+    background-color: rgb(23, 23, 23);
+    margin: 0;
+}
+li {
+    list-style: none;
+    display: inline-block;
+    margin: 15px 30px;
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
 table {
     width: 70%;
     border-collapse: collapse;
@@ -13,4 +31,7 @@ td {
 }
 .adjustBtn {
     margin: 6px;
+}
+.inputLabel {
+    margin-right: 10px;
 }

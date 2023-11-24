@@ -14,8 +14,8 @@ const loginToCvs = (event) => {
         .then(resp => resp.json())
         .then(data => {
             alert(data.message);
-            updateLoginPage();
             initForm();
+            window.location.href = "/";
         })
         .catch(err => {
             alert(err.message);
@@ -27,21 +27,3 @@ const initForm = () => {
     username.value = "";
     password.value = "";
 };
-
-const updateLoginPage = async () => {
-    await fetch("/api/userInfo")
-        .then(resp => resp.json())
-        .then(data => {
-            if (data.username) {
-                mainArticle.innerHTML = "";
-                const greeting = document.createElement("h2");
-                greeting.textContent = `Hello, ${data.username}!`;
-                mainArticle.appendChild(greeting);
-            }
-            else {
-                
-            }
-        });
-};
-
-updateLoginPage();

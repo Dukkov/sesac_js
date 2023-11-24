@@ -1,0 +1,25 @@
+doctype html 
+html(lang="ko")
+    head 
+        meta(charset="utf-8")
+        title Cart 
+        link(rel="stylesheet", type="text/css", href="static/style.css")
+    body
+        include includes/nav.pug
+        h1 장바구니
+        table#cartTable
+            thead 
+                tr 
+                    th ID 
+                    th Name
+                    th Price 
+                    th Quantity 
+                    th Action 
+            tbody#cartTableBody
+            tfoot 
+                tr 
+                    td(colspan="3")
+                    td 
+                        strong Total: 
+                    td#cartTableTotal
+        script(src="static/cart.js")

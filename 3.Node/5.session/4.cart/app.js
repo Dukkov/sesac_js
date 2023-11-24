@@ -18,6 +18,15 @@ const users = [
     { id: 2, username: "admin", password: "qwer1234" }
 ];
 
+const userCheck = (req, resp, next) => {
+    const user = req.session.user;
+
+    if(user)
+        next();
+    else
+        resp.send('<script>alert("Login first"); window.location="/";</script>');
+};
+
 app.use(session({
     secret: "myKey",
     resave: false,
@@ -31,7 +40,18 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "public", "views"));
 
 app.get("/", (req, resp) => {
-    resp.sendFile(path.join(__dirname, "public", "index.html"));
+    const user = req.session.user || {};
+    resp.render("index", { username: user.username });
+});
+
+app.get("/product", (req, resp) => {
+    const user = req.session.user || {};
+    resp.render("product", { username: user.username });
+});
+
+app.get("/cart", userCheck, (req, resp) => {
+    const user = req.session.user || {};
+    resp.render("cart", { username: user.username });
 });
 
 app.get("/api/userInfo", (req, resp) => {
@@ -43,16 +63,8 @@ app.get("/api/userInfo", (req, resp) => {
         resp.json({ message: "There's no user" });
 });
 
-app.get("/product", (req, resp) => {
-    resp.sendFile(path.join(__dirname, "public", "product.html"));
-});
-
 app.get("/api/products", (req, resp) => {
     resp.json(products);
-});
-
-app.get("/cart", (req, resp) => {
-    resp.sendFile(path.join(__dirname, "public", "cart.html"));
 });
 
 app.get("/api/cartInfo", (req, resp) => {

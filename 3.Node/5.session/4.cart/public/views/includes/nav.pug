@@ -1,0 +1,12 @@
+nav 
+    ul 
+        li
+            a(href="/") Home
+        li 
+            a(href="/product") Products
+        li 
+            a(href="/cart") Cart
+        if username
+            li Welcome, #{username}
+            li 
+                a(href="/api/logout") Logout

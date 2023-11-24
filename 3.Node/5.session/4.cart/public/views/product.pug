@@ -1,0 +1,18 @@
+doctype html 
+html(lang="ko")
+    head 
+        meta(charset="utf-8")
+        title Products 
+        link(rel="stylesheet" type="text/css" href="static/style.css")
+    body 
+        include includes/nav.pug
+        h1 상품목록
+        table#productTable 
+            thead 
+                tr 
+                    th ID 
+                    th Name 
+                    th Price 
+                    th Action 
+            tbody#productTableBody 
+        script(src="static/product.js")
