@@ -7,18 +7,18 @@
     </head>
     <body>
         <h1>사용자 테이블</h1>
-        <table id = "userTable">
+        <table class = "userTable">
             <tr>
                 {% for key, value in userDataJson[0] %}
-                    {% if key != "Address" %}
+                    {% if key != "Id" and key != "Address" %}
                         <th>{{ key }}</th>
                     {% endif %}
                 {% endfor %}
             </tr>
             {% for user in userDataJson %}
-                <tr>
+                <tr onclick="location.href='/user/{{ user.Id }}'" id="userRow">
                     {% for key, value in user %}
-                        {% if key != "Address" %}
+                        {% if key != "Id" and key != "Address" %}
                             <td>{{ value }}</td>
                         {% endif %}
                     {% endfor %}
@@ -29,12 +29,18 @@
             {% if currentPage > 1 %}
                 <a href="/?page={{ currentPage - 1 }}"><input type="button" value="← Previous"></a>
             {% endif %}
-            {% for num in range(1, totalPage + 1) %}
-                <a href="/?page={{ num }}" {% if num == currentPage %} class="active" {% endif %}><input type="button" value="{{ num }}" class = "pageButton"></a>
+            {% for num in range(currentPage - 2, currentPage + 3) %}
+                {% if currentPage < 3 %}
+                    {% set num = num + (3 - currentPage) %}
+                {% endif %}
+                {% if currentPage > 12 %}
+                    {% set num = num - (currentPage - 12) %}
+                {% endif %}
+                <a href="/?page={{ num }}" {% if num == currentPage %} class="active" {% endif %}><input type="button" value="{{ num }}" class="pageButton"></a>
             {% endfor %}
             {% if currentPage < totalPage %}
                 <a href="/?page={{ currentPage + 1 }}"><input type="button" value="→ Next"></a>
             {% endif %}
-        </div>
+        </div>              
     </body>
 </html>

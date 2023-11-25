@@ -1,9 +1,14 @@
-#userTable {
+.userTable {
     width: 100%;
     border-collapse: collapse;
 }
-#userTable th {
+.userTable th {
     background-color: rgb(227, 227, 227);
+}
+#userRow:hover {
+    background-color: rgb(12, 195, 12);
+    color: white;
+    height: 60px;
 }
 th, td {
     padding: 8px;

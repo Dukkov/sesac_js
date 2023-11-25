@@ -29,18 +29,18 @@ app.use("/static", express.static(path.join(__dirname, "public", "static")));
 
 app.set("view engine", "html");
 
-app.use((req, resp, next) => {
-    const start = Date.now();
+// app.use((req, resp, next) => {
+//     const start = Date.now();
 
-    resp.on("finish", () => {
-        const end = Date.now();
-        const duration = end - start;
+//     resp.on("finish", () => {
+//         const end = Date.now();
+//         const duration = end - start;
 
-        console.log(`request: ${req.path}, response: ${duration}`);
-    });
+//         console.log(`request: ${req.path}, response: ${duration}`);
+//     });
 
-    next();
-});
+//     next();
+// });
 
 app.get("/", (req, resp) => {
     const itemsPerPage = 15;
@@ -49,7 +49,15 @@ app.get("/", (req, resp) => {
     const endIndex = startIndex + itemsPerPage;
     const totalPages = Math.ceil(userDataJson.length / itemsPerPage);
     const slicedData = userDataJson.slice(startIndex, endIndex);
-    resp.render("index", { userDataJson: slicedData, title: "Hello", totalPage: parseInt(totalPages), currentPage: parseInt(page)});
+
+    resp.render("index", { userDataJson: slicedData, title: "User list", totalPage: parseInt(totalPages), currentPage: parseInt(page)});
+});
+
+app.get("/user/:id", (req, resp) => {
+    const userId = req.params.id;
+    const userInfo = userDataJson.find(u => u.Id === userId);
+
+    resp.render("userInfo", { userDataJson: userInfo });
 });
 
 app.listen(port, () => {
