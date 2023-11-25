@@ -29,28 +29,28 @@ app.use("/static", express.static(path.join(__dirname, "public", "static")));
 
 app.set("view engine", "html");
 
-// app.use((req, resp, next) => {
-//     const start = Date.now();
-
-//     resp.on("finish", () => {
-//         const end = Date.now();
-//         const duration = end - start;
-
-//         console.log(`request: ${req.path}, response: ${duration}`);
-//     });
-
-//     next();
-// });
-
 app.get("/", (req, resp) => {
-    const itemsPerPage = 15;
+    const itemsPerPage = 10;
     const page = req.query.page || 1;
     const startIndex = itemsPerPage * (page - 1);
     const endIndex = startIndex + itemsPerPage;
     const totalPages = Math.ceil(userDataJson.length / itemsPerPage);
     const slicedData = userDataJson.slice(startIndex, endIndex);
 
-    resp.render("index", { userDataJson: slicedData, title: "User list", totalPage: parseInt(totalPages), currentPage: parseInt(page)});
+    resp.render("index", { userDataJson: slicedData, title: "User list", totalPage: parseInt(totalPages), currentPage: parseInt(page) });
+});
+
+app.get("/user", (req, resp) => {
+    // const itemsPerPage = 10;
+    // const page = req.query.page || 1;
+    // // const startIndex = itemsPerPage * (page - 1);
+    // // const endIndex = startIndex + itemsPerPage;
+    // const totalPages = Math.ceil(userDataJson.length / itemsPerPage);
+    // // const slicedData = userDataJson.slice(startIndex, endIndex);
+    const userName = req.query.userName;
+    const searchResult = userDataJson.filter(u => u.Name.indexOf(userName) != -1);
+
+    resp.render("index", { userDataJson: searchResult, title: "Search result", target: userName});
 });
 
 app.get("/user/:id", (req, resp) => {

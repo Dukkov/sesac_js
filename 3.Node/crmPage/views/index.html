@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>사용자 테이블</h1>
+        <form action="/user/" method="get">
+            <input type="text" name="userName">
+            <input type="submit" value="검색">
+        </form>
+        <table class = "userTable">
+            <tr>
+                {% for key, value in userDataJson[0] %}
+                    {% if key != "Id" and key != "Address" %}
+                        <th>{{ key }}</th>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% if userDataJson.length === 0 %}
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Birthdate</th>
+                </tr>
+                <tr>
+                    <td colspan="5" id="emptyResult">No search results found.</td>
+                </tr>
+            {% endif %}
+            {% for user in userDataJson %}
+                <tr onclick="location.href='/user/{{ user.Id }}'" id="userRow">
+                    {% for key, value in user %}
+                        {% if key != "Id" and key != "Address" %}
+                            <td style="font-size: 0;">
+                                {% if key === "Name" %}
+                                    {% for num in range(user.Name.length) %}
+                                        {% if user.Name.charAt(num) === target %}
+                                            <span id="highlight" class="nameWord">{{ user.Name.charAt(num) }}</span>
+                                        {% else %}
+                                            <span class="nameWord">{{ user.Name.charAt(num) }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <span class="nameWord">{{ value }}</span>
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        {% if title === "User list" %}
+            <div class="pagination">
+                {% if currentPage > 1 %}
+                    <a href="/?page={{ currentPage - 1 }}"><input type="button" value="← Previous" class="pageMoveBtn"></a>
+                {% endif %}
+                {% for num in range(currentPage - 2, currentPage + 3) %}
+                    {% if currentPage < 3 %}
+                        {% set num = num + (3 - currentPage) %}
+                    {% endif %}
+                    {% if currentPage > 18 %}
+                        {% set num = num - (currentPage - 18) %}
+                    {% endif %}
+                    <input type="button" value="{{ num }}" class="pageBtn {% if num === currentPage %} active {% endif %}" onclick="location.href='/?page={{ num }}'">
+                {% endfor %}
+                {% if currentPage < totalPage %}
+                    <a href="/?page={{ currentPage + 1 }}"><input type="button" value="Next →" class="pageMoveBtn"></a>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if title === "Search result" %}
+            <a href="/"><p class="goBackLink">Back to list</p></a>
+        {% endif %}        
+    </body>
+</html>

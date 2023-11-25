@@ -1,0 +1,67 @@
+form {
+    margin-bottom: 10px;
+}
+.userTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+.userTable th {
+    background-color: orange;
+    color: white;
+    height: 35px;
+}
+#userRow:hover {
+    background-color: rgb(86, 201, 86);
+    color: white;
+    height: 55px;
+    font-weight: bold;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid rgb(209, 208, 208);
+}
+.pagination {
+    padding-top: 10px;
+}
+.pageBtn {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: white;
+    color: blue;
+    border: 1px solid rgb(209, 208, 208);
+}
+.pageBtn:hover {
+    background-color: rgb(209, 209, 209);
+}
+.pageMoveBtn {
+    height: 40px;
+    background-color: white;
+    color: blue;
+    border: 1px solid rgb(209, 208, 208);
+}
+.pageMoveBtn:hover {
+    background-color: rgb(209, 209, 209);
+}
+.active {
+    background-color: rgb(12, 195, 12);
+    color: white;
+    border: 0;
+}
+.active:hover {
+    background-color: rgb(11, 155, 11);
+}
+.goBackLink {
+    text-align: center;
+}
+#emptyResult {
+    text-align: center;
+}
+#highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+.nameWord {
+    font-size: 1rem;
+}
