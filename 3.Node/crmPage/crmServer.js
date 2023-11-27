@@ -41,12 +41,6 @@ app.get("/", (req, resp) => {
 });
 
 app.get("/user", (req, resp) => {
-    // const itemsPerPage = 10;
-    // const page = req.query.page || 1;
-    // // const startIndex = itemsPerPage * (page - 1);
-    // // const endIndex = startIndex + itemsPerPage;
-    // const totalPages = Math.ceil(userDataJson.length / itemsPerPage);
-    // // const slicedData = userDataJson.slice(startIndex, endIndex);
     const userName = req.query.userName;
     const searchResult = userDataJson.filter(u => u.Name.indexOf(userName) != -1);
 

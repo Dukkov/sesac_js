@@ -79,8 +79,18 @@ app.get("/api/cartTotal", (req, resp) => {
         return accumulator + (product.price * product.qty);
     }, 0);
 
-    console.log(total);
     resp.json({ total: total });
+});
+
+app.get("/api/logout", (req, resp) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.log("error", err);
+            resp.status(500).json({ message: "로그아웃 실패" });
+        }
+        else
+            resp.json({ message: "로그아웃 성공" });
+    });
 });
 
 app.post("/api/login", (req, resp) => {
