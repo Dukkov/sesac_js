@@ -1,2 +1,5 @@
 0.OT/
 node_modules
+.db
+.sqlite
+.sqlite3
