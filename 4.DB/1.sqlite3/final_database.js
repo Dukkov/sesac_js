@@ -1,8 +1,8 @@
 import sqlite3 from "sqlite3";
 
-const db = new sqlite3.Database("mydb3.db");
+export const db = new sqlite3.Database("mydb3.db");
 
-const createTable = () => {
+export const createTable = () => {
     return new Promise((resolve, reject) => {
         db.run(`CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,10 +19,8 @@ const createTable = () => {
     });
 };
 
-const insertUser = () => {
+export const insertUser = (newUser) => {
     return new Promise((resolve, reject) => {
-        const newUser = { username: "dukov", email: "dukov@sesac.com" };
-
         db.run(`INSERT INTO users (username, email) VALUES (?, ?)`,
             [newUser.username, newUser.email], (err) => {
             if (err) {
@@ -36,16 +34,10 @@ const insertUser = () => {
     });
 };
 
-const updateUser = () => {
+export const updateUser = (newUser) => {
     return new Promise((resolve, reject) => {
-        const updateUser = {
-            id: 1,
-            username: "sesac",
-            email: "sesac@sesac.com"
-        };
-
         db.run("UPDATE users SET username=?, email=? WHERE id=?",
-            [updateUser.username, updateUser.email, updateUser.id],
+            [newUser.username, newUser.email, newUser.id],
             (err) => {
                 if (err) {
                     console.error("update error")
@@ -58,12 +50,8 @@ const updateUser = () => {
     });
 };
 
-const deleteUser = () => {
+export const deleteUser = (delUser) => {
     return new Promise((resolve, reject) => {
-        const delUser = {
-            id: 3
-        };
-
         db.run("DELETE FROM users WHERE id=?",
             [delUser.id], (err) => {
                 if (err) {
@@ -77,7 +65,7 @@ const deleteUser = () => {
     });
 };
 
-const selectUser = () => {
+export const selectUser = () => {
     return new Promise((resolve, reject) => {
         db.each("SELECT * FROM users", (err, row) => {
             if (err) {
@@ -91,11 +79,3 @@ const selectUser = () => {
         });
     });
 };
-
-createTable()
-    .then(() => insertUser())
-    .then(() => updateUser())
-    .then(() => deleteUser())
-    .then(() => selectUser())
-    .then(() => db.close())
-    .catch((err) => console.error(err))
