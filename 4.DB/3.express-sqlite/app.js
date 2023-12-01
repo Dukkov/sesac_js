@@ -3,7 +3,7 @@ import sqlite3 from "sqlite3";
 import fs from "fs";
 
 const app = express();
-const port = 3000;
+const port = 8000;
 const dbFile = "mydb1.db";
 
 const db = new sqlite3.Database(dbFile);
@@ -34,21 +34,49 @@ app.get("/", (req, resp) => {
     resp.send("Hello World");
 });
 
+app.get("/users", (req, resp) => {
+    const userQuery = req.query;
+
+    if (Object.keys(userQuery).length && userQuery.username) {
+        const query = `SELECT * FROM users WHERE username="${userQuery.username}"`
+
+        db.each(query, (err, row) => {
+            resp.json(row);
+        });
+    }
+    else {
+        const query = `SELECT * FROM users`;
+
+        db.all(query, (err, rows) => {
+            resp.json(rows);
+        });
+    }
+});
+
+app.get("/products", (req, resp) => {
+    const productQuery = req.query;
+
+    if (Object.keys(userQuery).length) {
+        const query = `SELECT * FROM products WHERE username="${userQuery.username}"`
+
+        db.each(query, (err, row) => {
+            resp.json(row);
+        });
+    }
+    else {
+        const query = `SELECT * FROM products`;
+
+        db.all(query, (err, rows) => {
+            resp.json(rows);
+        });
+    }
+});
+
 app.get("/:table", (req, resp) => {
     const dbTable = req.params.table;
     const query = `SELECT * FROM ${dbTable}`;
 
     db.all(query, (err, rows) => {
         resp.json(rows);
-    });
-});
-
-app.get("/:table/:id", (req, resp) => {
-    const dbTable = req.params.table;
-    const rowId = req.params.id;
-    const query = `SELECT * FROM ${dbTable} WHERE id=${rowId}`
-
-    db.each(query, (err, row) => {
-        resp.json(row);
     });
 });
