@@ -1,16 +1,20 @@
 const productTableBody = document.getElementById("productTableBody");
 
-fetch("/api/products")
+fetch("/api/product")
     .then(resp => resp.json())
     .then(data => {
         for (row of data) {
             const productTableRow = document.createElement("tr");
             const productTableId = createTableCell(row.id);
+            const productTableImage = createTableCell();
+            productTableImage.style.width = "300px";
+            productTableImage.innerHTML = `<img src='/static/img/${row.image}'>`;
             const productTableName = createTableCell(row.name);
             const productTablePrice = createTableCell(row.price);
             const productTableBtn = createTableBtn("담기", row.id);
 
             productTableRow.appendChild(productTableId);
+            productTableRow.appendChild(productTableImage);
             productTableRow.appendChild(productTableName);
             productTableRow.appendChild(productTablePrice);
             productTableRow.appendChild(productTableBtn);
@@ -38,17 +42,10 @@ window.createTableBtn = (value, btnId) => {
 };
 
 window.addToCart = (id) => {
-    fetch(`/api/addCart/${id}`, { method: "POST" })
+    fetch(`/api/cart/add/${id}`, { method: "POST" })
         .then(resp => resp.json())
         .then(data => {
             alert(data.message);
         })
         .catch(err => console.error(err));
-};
-
-const logout = async () => {
-    const resp = await fetch("/api/logout");
-    const data = await resp.json();
-    alert("Logout done");
-    window.location = "/";
 };

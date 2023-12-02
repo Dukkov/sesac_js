@@ -6,7 +6,7 @@ const loginForm = document.getElementById("loginForm");
 const loginToCvs = (event) => {
     event.preventDefault();
 
-    fetch("/api/login", {
+    fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: username.value, password: password.value })
@@ -26,11 +26,4 @@ const loginToCvs = (event) => {
 const initForm = () => {
     username.value = "";
     password.value = "";
-};
-
-const logout = async () => {
-    const resp = await fetch("/api/logout");
-    const data = await resp.json();
-    alert("Logout done");
-    window.location = "/";
 };

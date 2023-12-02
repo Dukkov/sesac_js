@@ -3,8 +3,14 @@ const cartTableBody = document.getElementById("cartTableBody");
 const updateCartPage = () => {
     cartTableBody.innerHTML = "";
 
-    fetch("/api/cartInfo")
-    .then(resp => resp.json())
+    fetch("/api/cart")
+    .then(resp => {
+        if (resp.status === 401) {
+            alert("Login first");
+            window.location.href = "/";
+        }
+        return resp.json();
+    })
     .then(data => {
         if (data.length === 0) {
             const cartTableRow = document.createElement("tr");
@@ -20,6 +26,9 @@ const updateCartPage = () => {
                 if (parseInt(row.qty) > 0) {
                     const cartTableRow = document.createElement("tr");
                     const cartTableId = createTableCell(row.id);
+                    const cartTableImage = createTableCell();
+                    cartTableImage.style.width = "300px";
+                    cartTableImage.innerHTML = `<img src='/static/img/${row.image}'>`;
                     const cartTableName = createTableCell(row.name);
                     const cartTablePrice = createTableCell(row.price);
                     const cartTableQty = createTableCell(row.qty);
@@ -30,6 +39,7 @@ const updateCartPage = () => {
                     cartTableQty.appendChild(cartTablePlusQty);
                     cartTableQty.appendChild(cartTableMinusQty);
                     cartTableRow.appendChild(cartTableId);
+                    cartTableRow.appendChild(cartTableImage);
                     cartTableRow.appendChild(cartTableName);
                     cartTableRow.appendChild(cartTablePrice);
                     cartTableRow.appendChild(cartTableQty);
@@ -71,7 +81,7 @@ const createAdjustBtn = (value, onclick, id) => {
 };
 
 const plusQty = (id) => {
-    fetch(`/api/adjustCart/${id}`, {
+    fetch(`/api/cart/adjust/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ adjust : 1 })
@@ -84,7 +94,7 @@ const plusQty = (id) => {
 }
 
 const minusQty = (id) => {
-    fetch(`/api/adjustCart/${id}`, {
+    fetch(`/api/cart/adjust/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ adjust : -1 })
@@ -98,7 +108,7 @@ const minusQty = (id) => {
 
 const rmFromCart = (id) => {
     if (confirm("Are you sure you want to remove the item from your cart?")) {
-        fetch(`/api/dropCart/${id}`, { method: "DELETE" })
+        fetch(`/api/cart/drop/${id}`, { method: "DELETE" })
             .then(resp => resp.json())
             .then(data => {
                 alert(data.message);
@@ -109,19 +119,12 @@ const rmFromCart = (id) => {
 };
 
 const getCartTotal = () => {
-    return fetch("/api/cartTotal")
+    return fetch("/api/cart/total")
         .then(resp => resp.json())
         .then(data => {
             console.log(data.total);
             return (data.total);
         })
-};
-
-const logout = async () => {
-    const resp = await fetch("/api/logout");
-    const data = await resp.json();
-    alert("Logout done");
-    window.location = "/";
 };
 
 updateCartPage();

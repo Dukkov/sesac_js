@@ -3,7 +3,7 @@ html(lang="ko")
     head 
         meta(charset="utf-8")
         title Cart 
-        link(rel="stylesheet", type="text/css", href="static/style.css")
+        link(rel="stylesheet" type="text/css" href="static/css/style.css")
     body
         include includes/nav.pug
         h1 장바구니
@@ -11,15 +11,16 @@ html(lang="ko")
             thead 
                 tr 
                     th ID 
+                    th Image
                     th Name
                     th Price 
                     th Quantity 
                     th Action 
             tbody#cartTableBody
-            tfoot 
+            tfoot#cartTableFoot
                 tr 
-                    td(colspan="3")
+                    td(colspan="4")
                     td 
                         strong Total: 
                     td#cartTableTotal
-        script(src="static/cart.js")
+        script(src="static/js/cart.js")

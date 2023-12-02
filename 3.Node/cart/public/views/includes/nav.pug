@@ -1,12 +1,13 @@
 nav 
     ul 
-        li
+        li.nav-item(class=(currentPage === "home") && "nav-highlight")
             a(href="/") Home
-        li 
+        li.nav-item(class=(currentPage === "products") && "nav-highlight")
             a(href="/product") Products
-        li 
+        li.nav-item(class=(currentPage === "cart") && "nav-highlight")
             a(href="/cart") Cart
         if username
-            li Welcome, #{username}
-            li 
-                a(href="#" onclick="logout()") Logout
+            li.nav-logout Welcome, #{username}&nbsp;
+                a(href="#" onclick="logout()")
+                    u Logout
+    script(src="static/js/nav.js")

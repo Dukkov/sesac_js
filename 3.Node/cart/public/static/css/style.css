@@ -1,22 +1,37 @@
 body {
     margin: 0;
 }
+h1, h2, p {
+    margin-left: 10px;
+}
 ul {
     padding: 0;
     background-color: rgb(23, 23, 23);
     margin: 0;
+    display: flex;
 }
 li {
     list-style: none;
     display: inline-block;
-    margin: 15px 30px;
+    padding: 15px 30px;
     color: white;
 }
 a {
     text-decoration: none;
     color: white;
 }
+.nav-item {
+    flex: none;
+}
+.nav-highlight {
+    background-color: gray;
+    font-weight: bold;
+}
+.nav-logout {
+    margin-left: auto;
+}
 table {
+    margin-left: 10px;
     width: 70%;
     border-collapse: collapse;
 }
@@ -34,4 +49,18 @@ td {
 }
 .inputLabel {
     margin-right: 10px;
+}
+#cartTableTotal {
+    font-weight: bold;
+}
+#cartTableBody img {
+    width: 100px;
+    height: 100px;
+}
+#cartTableFoot {
+    background-color: rgb(221, 218, 218);
+}
+#productTableBody img {
+    width: 200px;
+    height: 200px;
 }
