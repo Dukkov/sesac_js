@@ -1,0 +1,21 @@
+doctype html 
+html(lang="ko")
+    head 
+        meta(charset="utf-8")
+        title Login 
+        link(rel="stylesheet" type="text/css" href="static/css/style.css")
+    body
+        form#loginForm
+            div.loginInput
+                label(for="usernameInput") Username:
+                br
+                input(type="text" name="username" id="usernameInput")
+            div.loginInput
+                label(for="passwordInput") Password:
+                br
+                input(type="password" name="password" id="passwordInput")
+            div 
+                label(for="rememberCheck") Remember Me
+                input(type="checkbox" id="rememberCheck")
+            div
+                input#loginBtn(type="submit" value="Login")

@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(228, 228, 228);
+}
+
+#loginForm {
+    background-color: white;
+    width: 13%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#loginForm div {
+    margin-bottom: 15px;
+}
+
+#loginForm div:last-child {
+    margin-bottom: 0;
+    margin-top: 25px;
+}
+
+.loginInput input {
+    margin-top: 10px;
+    font-size: 15px;
+    width: 205px;
+    height: 30px;
+    border: 1px solid black;
+}
+
+#loginBtn {
+    width: 60px;
+    height: 35px;
+    border: 0;
+    border-radius: 3px;
+    background-color: rgb(81, 181, 27);
+    color: white;
+}
+
+#loginBtn:hover {
+    background-color: rgb(65, 144, 22);
+}
