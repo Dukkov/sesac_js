@@ -1,3 +1,5 @@
 export const mainPage = (req, resp) => {
-    resp.render("index");
+    const user = req.session.user || {};
+
+    resp.render("index", { username: user.username });
 };
