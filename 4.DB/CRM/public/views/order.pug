@@ -3,10 +3,16 @@ html(lang="ko")
     head 
         meta(charset="utf-8")
         title Order list 
-        link(rel="stylesheet" type="text/css" href="static/css/style.css")
+        link(rel="stylesheet" type="text/css" href="/static/css/style.css")
     body
         section.nav-section
             include includes/nav.pug
         section.main-section
-            p Orders page
+            table 
+                thead 
+                    tr 
+                        th id
+                        th ordered_at
+                        th store_id
+                        th user_id
         section.paging-section

@@ -3,10 +3,25 @@ html(lang="ko")
     head 
         meta(charset="utf-8")
         title User list 
-        link(rel="stylesheet" type="text/css" href="static/css/style.css")
+        link(rel="stylesheet" type="text/css" href="/static/css/style.css")
     body
         section.nav-section
             include includes/nav.pug
         section.main-section
-            p Users page
+            table 
+                thead 
+                    tr 
+                        th id
+                        th name
+                        th gender
+                        th age 
+                        th birthday
+                tbody 
+                    for row in userData
+                        tr 
+                            td #{row.Id}
+                            td #{row.Name}
+                            td #{row.Gender}
+                            td #{row.Age}
+                            td #{row.Birthdate}
         section.paging-section

@@ -3,10 +3,17 @@ html(lang="ko")
     head 
         meta(charset="utf-8")
         title Item list 
-        link(rel="stylesheet" type="text/css" href="static/css/style.css")
+        link(rel="stylesheet" type="text/css" href="/static/css/style.css")
     body
         section.nav-section
             include includes/nav.pug
         section.main-section
-            p Items page
+            table
+                thead
+                    tr 
+                        th id
+                        th type
+                        th name
+                        th unit_price
+                tbody
         section.paging-section

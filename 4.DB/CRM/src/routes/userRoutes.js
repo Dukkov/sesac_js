@@ -3,4 +3,4 @@ import { userList } from "../controllers/userController.js";
 
 export const router = express.Router();
 
-router.get("/", userList);
+router.get("/:pageNum", userList);
