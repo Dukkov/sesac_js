@@ -1,15 +1,22 @@
 import { User } from "../utils/user.js";
 
-export const userListRenderer = async (req, resp) => {
-    const userList = new User();
+const userList = new User();
+const initPromise = userList.init();
 
+export const userListRenderer = async (req, resp) => {
     try {
-        await userList.init();
+        await initPromise;
     } catch (err) {
         console.error(err);
         resp.status(500).json({ message: "Internal server error" });
         return;
     }
+
+    if (req.params.pageNum < 1 || req.params.pageNum > userList.paginator.getTotalPage()) {
+        resp.status(404).json({ message: "404 Page Not Found" });
+        return;
+    }
+    
     userList.paginator.setItemsPerPage(20);
     userList.paginator.setPageNum(req.params.pageNum);
 

@@ -1,15 +1,49 @@
 div.pageBtn-container
     if pageNum > 1
         a(href=`/${currentPage}/${+pageNum - 1}`)
-            input.moveBtn(type="button" value="Previous")
+            input.pageBtn.moveBtn(type="button" value="Previous")
+    
     if totalPage < 10
         each _, i in Array(totalPage)
             - var page = i + 1;
             a(href=`/${currentPage}/${page}`)
                 if page == pageNum
-                    input.pageBtn.pageBtn-highlight(type="button" value=page)
+                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page)
                 else 
-                    input.pageBtn(type="button" value=page)
+                    input.pageBtn.numBtn(type="button" value=page)
+    else
+        - var startPage = Math.max(4, parseInt(pageNum) - 5);
+        - var endPage = Math.min(parseInt(totalPage) - 3, parseInt(pageNum) + 5);
+        each _, i in Array(3)
+            - var page = i + 1;
+            a(href=`/${currentPage}/${page}`)
+                if page == pageNum
+                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page)
+                else 
+                    input.pageBtn.numBtn(type="button" value=page)
+
+        if startPage > 4
+            input.pageBtn(type="button" value="..." disabled=true)
+
+        each _, i in Array(endPage - startPage + 1)
+            - var page = startPage + i;
+            a(href=`/${currentPage}/${page}`)
+                if page == pageNum
+                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page)
+                else 
+                    input.pageBtn.numBtn(type="button" value=page)
+
+        if endPage < totalPage - 3
+            input.pageBtn(type="button" value="..." disabled=true)
+
+        each _, i in Array(3)
+            - var page = totalPage - 2 + i;
+            a(href=`/${currentPage}/${page}`)
+                if page == pageNum
+                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page)
+                else 
+                    input.pageBtn.numBtn(type="button" value=page)
+
     if pageNum < totalPage
         a(href=`/${currentPage}/${+pageNum + 1}`)
-            input.moveBtn(type="button" value="Next")
+            input.pageBtn.moveBtn(type="button" value="Next")

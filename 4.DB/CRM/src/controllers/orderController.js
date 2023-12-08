@@ -1,15 +1,23 @@
 import { Order } from "../utils/order.js";
 
+const orderList = new Order();
+const initPromise = orderList.init();
+
 export const orderListRenderer = async (req, resp) => {
-    const orderList = new Order();
 
     try {
-        await orderList.init();
+        await initPromise;
     } catch (err) {
         console.error(err);
         resp.status(500).json({ message: "Internal server error" });
         return;
     }
+    
+    if (req.params.pageNum < 1 || req.params.pageNum > orderList.paginator.getTotalPage()) {
+        resp.status(404).json({ message: "404 Page Not Found" });
+        return;
+    }
+
     orderList.paginator.setItemsPerPage(20);
     orderList.paginator.setPageNum(req.params.pageNum);
 
