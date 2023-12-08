@@ -15,4 +15,12 @@ html(lang="ko")
                         th type
                         th name
                         th address
+                tbody 
+                    for row in storeData 
+                        tr 
+                            td #{row.Id}
+                            td #{row.Type}
+                            td #{row.Name}
+                            td #{row.Address}
         section.paging-section
+            include includes/paging.pug

@@ -14,4 +14,11 @@ html(lang="ko")
                         th id
                         th order_id
                         th item_id
+                tbody 
+                    for row in orderItemData 
+                        tr 
+                            td #{row.Id}
+                            td #{row.OrderId}
+                            td #{row.ItemId}
         section.paging-section
+            include includes/paging.pug

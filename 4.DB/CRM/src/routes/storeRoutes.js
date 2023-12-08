@@ -1,6 +1,6 @@
 import express from "express";
-import { storeList } from "../controllers/storeController.js";
+import { storeListRenderer } from "../controllers/storeController.js";
 
 export const router = express.Router();
 
-router.get("/", storeList);
+router.get("/:pageNum", storeListRenderer);

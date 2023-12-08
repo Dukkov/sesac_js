@@ -1,0 +1,15 @@
+div.pageBtn-container
+    if pageNum > 1
+        a(href=`/${currentPage}/${+pageNum - 1}`)
+            input.moveBtn(type="button" value="Previous")
+    if totalPage < 10
+        each _, i in Array(totalPage)
+            - var page = i + 1;
+            a(href=`/${currentPage}/${page}`)
+                if page == pageNum
+                    input.pageBtn.pageBtn-highlight(type="button" value=page)
+                else 
+                    input.pageBtn(type="button" value=page)
+    if pageNum < totalPage
+        a(href=`/${currentPage}/${+pageNum + 1}`)
+            input.moveBtn(type="button" value="Next")

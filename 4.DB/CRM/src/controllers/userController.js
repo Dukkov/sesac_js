@@ -1,16 +1,22 @@
-import { db } from "../database/initDB.js"
+import { User } from "../utils/user.js";
 
-export const userList = (req, resp) => {
-    const pageNum = req.params.pageNum;
-    const startIndex = (pageNum - 1) * 20;
-    const endIndex = pageNum * 20;
+export const userListRenderer = async (req, resp) => {
+    const userList = new User();
 
-    db.all("SELECT Id, Name, Gender, Age, Birthdate FROM 'user'", (err, rows) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
+    try {
+        await userList.init();
+    } catch (err) {
+        console.error(err);
+        resp.status(500).json({ message: "Internal server error" });
+        return;
+    }
+    userList.paginator.setItemsPerPage(20);
+    userList.paginator.setPageNum(req.params.pageNum);
 
-        resp.render("user", { currentPage: "users", userData: rows.slice(startIndex, endIndex) });
+    resp.render("user", { 
+        currentPage: "users", 
+        userData: userList.paginator.getCurrentPage(),
+        pageNum: req.params.pageNum,
+        totalPage: userList.paginator.getTotalPage()
     });
 };

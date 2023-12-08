@@ -1,6 +1,6 @@
 import express from "express";
-import { orderList } from "../controllers/orderController.js";
+import { orderListRenderer } from "../controllers/orderController.js";
 
 export const router = express.Router();
 
-router.get("/", orderList);
+router.get("/:pageNum", orderListRenderer);

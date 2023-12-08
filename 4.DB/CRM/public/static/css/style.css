@@ -39,3 +39,37 @@ body {
     margin: 0 auto;
     padding: 0 10px;
 }
+
+.paging-section {
+    width: 1080px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.pageBtn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.moveBtn {
+    width: 65px;
+    height: 35px;
+    background-color: white;
+    color: blue;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.pageBtn {
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    color: blue;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.pageBtn-highlight {
+    background-color: blue;
+    color: white;
+}

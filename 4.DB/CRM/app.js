@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import { initDatabase } from "./src/database/initDB.js";
+import { rootRedirector } from "./src/middlewares/rootRedirector.js";
 import { router as userRouter } from "./src/routes/userRoutes.js";
 import { router as orderRouter } from "./src/routes/orderRoutes.js"
 import { router as orderItemRouter } from "./src/routes/orderItemRoutes.js"
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "public", "views"));
 
+app.use(rootRedirector);
 app.use("/users", userRouter);
 app.use("/orders", orderRouter);
 app.use("/order-items", orderItemRouter);
