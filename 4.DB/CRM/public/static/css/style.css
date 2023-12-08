@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 #crm-navbar {
     width: 1080px;
     height: 40px;
@@ -24,7 +28,6 @@ body {
 }
 
 .nav-item a {
-    text-decoration: none;
     color: rgb(167, 167, 167);
 }
 
@@ -68,6 +71,14 @@ body {
 
 .main-section tbody tr:hover {
     background-color: rgb(220, 220, 239);
+}
+
+.main-section a {
+    color: rgb(91, 91, 224);
+}
+
+.main-section a:hover {
+    text-decoration: underline;
 }
 
 .paging-section {

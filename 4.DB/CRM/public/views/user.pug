@@ -19,7 +19,8 @@ html(lang="ko")
                 tbody 
                     for row in userData
                         tr 
-                            td #{row.Id}
+                            td
+                                a.id-info(href=`/users/user-info/${row.Id}`) #{row.Id}
                             td #{row.Name}
                             td #{row.Gender}
                             td #{row.Age}

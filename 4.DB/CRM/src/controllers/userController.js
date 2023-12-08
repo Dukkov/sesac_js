@@ -27,3 +27,9 @@ export const userListRenderer = async (req, resp) => {
         totalPage: userList.paginator.getTotalPage()
     });
 };
+
+export const userInfoRenderer = (req, resp) => {
+    resp.render("userInfo", {
+        
+    });
+};

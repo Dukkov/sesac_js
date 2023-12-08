@@ -18,7 +18,8 @@ html(lang="ko")
                 tbody 
                     for row in orderData
                         tr 
-                            td #{row.Id}
+                            td 
+                                a(href=`/orders/order-info/${row.Id}`) #{row.Id}
                             td #{row.OrderAt}
                             td #{row.StoreId}
                             td #{row.UserId}

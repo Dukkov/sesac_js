@@ -1,0 +1,51 @@
+doctype html 
+html(lang="ko")
+    head 
+        meta(charset="utf-8")
+        title User information
+        link(rel="stylesheet" type="text/css" href="/static/css/style.css")
+    body 
+        section.nav-section
+            include includes/nav.pug
+        section.main-section
+            p 고객정보
+            table
+                thead 
+                    tr 
+                        th name
+                        th gender
+                        th age
+                        th birthday
+                        th address
+                tbody
+                    tr 
+                        td
+                        td
+                        td
+                        td
+                        td
+            p 주문정보
+            table 
+                thead
+                    tr 
+                        th order id
+                        th purchased date
+                        th purchased location 
+                tbody
+                    //- for
+            
+            div
+                p 자주 방문한 매장 Top 5
+                ul 
+                    li 1
+                    li 2
+                    li 3
+                    li 4
+                    li 5
+                p 자주 주문한 상품명 Top 5
+                ul 
+                    li 1
+                    li 2
+                    li 3
+                    li 4
+                    li 5

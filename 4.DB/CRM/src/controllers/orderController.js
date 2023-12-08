@@ -28,3 +28,9 @@ export const orderListRenderer = async (req, resp) => {
         totalPage: orderList.paginator.getTotalPage()
     });
 };
+
+export const orderInfoRenderer = (req, resp) => {
+    resp.render("orderInfo", {
+
+    });
+}

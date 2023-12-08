@@ -18,7 +18,8 @@ html(lang="ko")
                     for row in orderItemData 
                         tr 
                             td #{row.Id}
-                            td #{row.OrderId}
+                            td 
+                                a(href=`/orders/order-info/${row.OrderId}`) #{row.OrderId}
                             td #{row.ItemId}
         section.paging-section
             include includes/paging.pug
