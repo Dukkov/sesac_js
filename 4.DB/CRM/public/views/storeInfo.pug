@@ -1,0 +1,46 @@
+doctype html 
+html(lang="ko")
+    head 
+        meta(charset="utf-8")
+        title Store information
+        link(rel="stylesheet" type="text/css" href="/static/css/style.css")
+    body 
+        section.nav-section
+            include includes/nav.pug
+        section.main-section
+            p 매장 정보
+            table
+                thead 
+                    tr 
+                        th name
+                        th type
+                        th address
+                tbody
+                    tr 
+                        td
+                        td
+                        td
+            p 월간 매출액
+            table 
+                thead
+                    tr 
+                        th month
+                        th revenue
+                        th count 
+                tbody
+                    tr 
+                        td
+                        td
+                        td
+            p 단골 고객
+            table 
+                thead 
+                    tr 
+                        th user_id 
+                        th name 
+                        th frequency 
+                tbody 
+                    tr 
+                        td
+                        td
+                        td

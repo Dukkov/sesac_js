@@ -26,3 +26,7 @@ export const itemListRenderer = async (req, resp) => {
         totalPage: itemList.paginator.getTotalPage()
     });
 };
+
+export const itemInfoRenderer = (req, resp) => {
+    resp.render("itemInfo");
+}

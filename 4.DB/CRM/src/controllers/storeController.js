@@ -26,3 +26,7 @@ export const storeListRenderer = async (req, resp) => {
         totalPage: storeList.paginator.getTotalPage()
     });
 };
+
+export const storeInfoRenderer = (req, resp) => {
+    resp.render("storeInfo");
+};

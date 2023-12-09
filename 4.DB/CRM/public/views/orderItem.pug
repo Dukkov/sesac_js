@@ -20,6 +20,7 @@ html(lang="ko")
                             td #{row.Id}
                             td 
                                 a(href=`/orders/order-info/${row.OrderId}`) #{row.OrderId}
-                            td #{row.ItemId}
+                            td 
+                                a(href=`/items/item-info/${row.ItemId}`) #{row.ItemId}
         section.paging-section
             include includes/paging.pug

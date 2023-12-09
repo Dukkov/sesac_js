@@ -18,7 +18,8 @@ html(lang="ko")
                 tbody 
                     for row in storeData 
                         tr 
-                            td #{row.Id}
+                            td 
+                                a(href=`/stores/store-info/${row.Id}`) #{row.Id}
                             td #{row.Type}
                             td #{row.Name}
                             td #{row.Address}
