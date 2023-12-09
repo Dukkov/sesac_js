@@ -1,12 +1,10 @@
 import { User } from "../utils/user.js";
-import { db } from "../database/initDB.js";
 
 const userList = new User();
-const initPromise = userList.init();
 
 export const userListRenderer = async (req, resp) => {
     try {
-        await initPromise;
+        await userList.init();
     } catch (err) {
         console.error(err);
         resp.status(500).json({ message: "Internal server error" });

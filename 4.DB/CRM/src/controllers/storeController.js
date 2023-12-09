@@ -1,11 +1,10 @@
 import { Store } from "../utils/store.js";
 
 const storeList = new Store();
-const initPromise = storeList.init();
 
 export const storeListRenderer = async (req, resp) => {
     try {
-        await initPromise;
+        await storeList.init();
     } catch (err) {
         console.error(err);
         resp.status(500).json({ message: "Internal server error" });

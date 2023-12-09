@@ -9,8 +9,8 @@ const csvFiles = [
     path.join(__dirname, "src", "data", "item.csv"),
     path.join(__dirname, "src", "data", "order.csv"),
     path.join(__dirname, "src", "data", "orderItem.csv"),
-    path.join(__dirname, "src", "data", "store.csv"),
-    path.join(__dirname, "src", "data", "user.csv")
+    path.join(__dirname, "src", "data", "user.csv"),
+    path.join(__dirname, "src", "data", "store.csv")
 ];
 export const db = new sqlite3.Database(path.join(__dirname, "src", "data", "crmDB.db"));
 
@@ -22,7 +22,6 @@ const createTable = (tableName, csvHeader) => {
             else
                 return (`${header} TEXT`);
         });
-
         db.run(`CREATE TABLE IF NOT EXISTS [${tableName}] (${headers.join(", ")})`, (err) => {
             if (err) {
                 console.error("Error occured while creating tables");
@@ -33,6 +32,7 @@ const createTable = (tableName, csvHeader) => {
         });
     });
 };
+
 
 const checkTable = (tableName) => {
     return new Promise((resolve, reject) => {

@@ -1,12 +1,11 @@
 import { Order } from "../utils/order.js";
 
 const orderList = new Order();
-const initPromise = orderList.init();
 
 export const orderListRenderer = async (req, resp) => {
 
     try {
-        await initPromise;
+        await orderList.init();
     } catch (err) {
         console.error(err);
         resp.status(500).json({ message: "Internal server error" });

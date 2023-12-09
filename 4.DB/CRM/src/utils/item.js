@@ -4,11 +4,15 @@ import { Paginator } from "./paginator.js";
 export class Item {
     constructor() {
         this.paginator = new Paginator();
+        this.initialized = false;
     }
 
     async init() {
-        await this.itemListGenerator();
-        this.paginator.setItemList(this.itemList);
+        if (!this.initialized) {
+            await this.itemListGenerator();
+            this.paginator.setItemList(this.itemList);
+            this.initialized = true;
+        }
     }
 
     itemListGenerator() {

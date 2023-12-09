@@ -32,4 +32,7 @@ initDatabase()
             console.log(`Port ${port} ready`);
         });
     })
-    .catch(err => console.error(err));
+    .catch((err) => {
+        console.log("app error");
+        console.error(err)
+    });
