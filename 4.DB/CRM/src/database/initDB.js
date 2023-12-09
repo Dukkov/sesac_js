@@ -25,7 +25,7 @@ const createTable = (tableName, csvHeader) => {
 
         db.run(`CREATE TABLE IF NOT EXISTS [${tableName}] (${headers.join(", ")})`, (err) => {
             if (err) {
-                console.error(err);
+                console.error("Error occured while creating tables");
                 reject(err);
             }
             console.log(`Table ${tableName} created`);
@@ -38,7 +38,7 @@ const checkTable = (tableName) => {
     return new Promise((resolve, reject) => {
         db.get(`SELECT COUNT(*) AS count FROM [${tableName}]`, (err, row) => {
             if (err) {
-                console.error(err);
+                console.error("Error occured while counting tables");
                 reject(err);
             }
             resolve(row.count);
@@ -64,7 +64,7 @@ const insertTable = (tableName, csvFile) => {
                     sql.finalize();
                     db.run("COMMIT;", (err) => {
                         if (err) {
-                            console.error(err);
+                            console.error("Error occured during transaction");
                             reject(err);
                         } else {
                             console.log(`Table ${tableName} initiating done`);

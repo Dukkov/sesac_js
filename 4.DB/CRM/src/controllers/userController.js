@@ -1,4 +1,5 @@
 import { User } from "../utils/user.js";
+import { db } from "../database/initDB.js";
 
 const userList = new User();
 const initPromise = userList.init();
