@@ -19,7 +19,7 @@ html(lang="ko")
                     for row in orderData
                         tr 
                             td 
-                                a(href=`/orders/order-info/${row.Id}`) #{row.Id}
+                                a(href=`/order-items/order-item-info/${row.Id}`) #{row.Id}
                             td #{row.OrderAt}
                             td #{row.StoreId}
                             td #{row.UserId}

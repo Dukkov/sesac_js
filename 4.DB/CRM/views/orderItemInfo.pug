@@ -17,8 +17,10 @@ html(lang="ko")
                         th item_id
                         th item_name
                 tbody
-                    tr 
-                        td
-                        td
-                        td
-                        td
+                    for row in orderItemData 
+                        tr 
+                            td #{row.Id}
+                            td 
+                                a(href=`/orders/order-info/${row.OrderId}`) #{row.OrderId}
+                            td #{row.ItemId}
+                            td #{row.ItemName}

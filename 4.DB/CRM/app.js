@@ -1,7 +1,7 @@
 import express from "express";
+import morgan from "morgan";
 import path from "path";
 import { initDatabase } from "./src/database/initDB.js";
-import { rootRedirector } from "./src/middlewares/rootRedirector.js";
 import { router as userRouter } from "./src/routes/userRoutes.js";
 import { router as orderRouter } from "./src/routes/orderRoutes.js"
 import { router as orderItemRouter } from "./src/routes/orderItemRoutes.js"
@@ -17,9 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "public", "views"));
+app.set("views", path.join(__dirname, "views"));
 
-app.use(rootRedirector);
+app.get("/", (req, resp) => {
+    resp.redirect("/users/1");
+});
 app.use("/users", userRouter);
 app.use("/orders", orderRouter);
 app.use("/order-items", orderItemRouter);

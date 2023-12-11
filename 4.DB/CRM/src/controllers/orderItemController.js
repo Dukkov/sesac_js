@@ -1,3 +1,4 @@
+import { db } from "../database/initDB.js";
 import { OrderItem } from "../utils/orderItem.js";
 
 const orderItemList = new OrderItem();
@@ -25,4 +26,32 @@ export const orderItemListRenderer = async (req, resp) => {
         pageNum: req.params.pageNum,
         totalPage: orderItemList.paginator.getTotalPage()
     });
+};
+
+export const orderItemInfoRenderer = async (req, resp) => {
+    try {
+        const sql = `
+        SELECT oi.Id AS Id, OrderId, ItemId, i.Name AS ItemName
+        FROM "orderitem" AS oi
+        JOIN "item" AS i
+        ON oi.ItemId = i.Id
+        WHERE oi.OrderId =?;`;
+        
+        const orderItemData = await new Promise((resolve, reject) => {
+            db.all(sql, req.params.orderItemId, (err, row) => {
+                if (err)
+                    reject(err);
+                else
+                    resolve(row);
+            });
+        });
+
+        resp.render("orderItemInfo", {
+            orderItemData: orderItemData
+        });
+    } catch (err) {
+        console.error(err.message);
+        resp.status(500).json({ message: "Internal server error" });
+        return;
+    }
 };

@@ -3,7 +3,7 @@ import { Paginator } from "./paginator.js";
 
 export class User {
     constructor() {
-        this.paginator = new Paginator();
+        this.paginator = new Paginator(); // 생성자로 setPageNum
         this.initialized = false;
     }
 

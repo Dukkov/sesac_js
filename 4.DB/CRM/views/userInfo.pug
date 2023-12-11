@@ -19,11 +19,11 @@ html(lang="ko")
                         th address
                 tbody
                     tr 
-                        td
-                        td
-                        td
-                        td
-                        td
+                        td #{userData.Name}
+                        td #{userData.Gender}
+                        td #{userData.Age}
+                        td #{userData.Birthdate}
+                        td #{userData.Address}
             p 주문정보
             table 
                 thead
@@ -32,8 +32,13 @@ html(lang="ko")
                         th purchased date
                         th purchased location 
                 tbody
-                    //- for
-            
+                    for row in orderData
+                        tr 
+                            td 
+                                a(href=`/orders/order-info/${row.OrderId}`) #{row.OrderId}
+                            td #{row.OrderAt}
+                            td 
+                                a(href=`/orders/order-info/${row.StoreId}`) #{row.StoreId}
             div
                 p 자주 방문한 매장 Top 5
                 ul 

@@ -8,7 +8,7 @@ div.pageBtn-container
             - var page = i + 1;
             a(href=`/${currentPage}/${page}`)
                 if page == pageNum
-                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page)
+                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page disabled=true)
                 else 
                     input.pageBtn.numBtn(type="button" value=page)
     else
@@ -18,7 +18,7 @@ div.pageBtn-container
             - var page = i + 1;
             a(href=`/${currentPage}/${page}`)
                 if page == pageNum
-                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page)
+                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page disabled=true)
                 else 
                     input.pageBtn.numBtn(type="button" value=page)
 
@@ -29,7 +29,7 @@ div.pageBtn-container
             - var page = startPage + i;
             a(href=`/${currentPage}/${page}`)
                 if page == pageNum
-                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page)
+                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page disabled=true)
                 else 
                     input.pageBtn.numBtn(type="button" value=page)
 
@@ -40,7 +40,7 @@ div.pageBtn-container
             - var page = totalPage - 2 + i;
             a(href=`/${currentPage}/${page}`)
                 if page == pageNum
-                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page)
+                    input.pageBtn.numBtn.numBtn-highlight(type="button" value=page disabled=true)
                 else 
                     input.pageBtn.numBtn(type="button" value=page)
 
