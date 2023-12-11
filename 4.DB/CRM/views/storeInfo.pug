@@ -17,21 +17,23 @@ html(lang="ko")
                         th address
                 tbody
                     tr 
-                        td
-                        td
-                        td
+                        td #{storeData.Name}
+                        td #{storeData.Type}
+                        td #{storeData.Address}
             p 월간 매출액
-            table 
-                thead
-                    tr 
-                        th month
-                        th revenue
-                        th count 
-                tbody
-                    tr 
-                        td
-                        td
-                        td
+            div.revenue-table-container
+                table 
+                    thead
+                        tr 
+                            th month
+                            th revenue
+                            th count 
+                    tbody
+                        for row in revenueData 
+                            tr 
+                                td #{row.Month}
+                                td #{row.Revenue}
+                                td #{row.Count}
             p 단골 고객
             table 
                 thead 
@@ -40,7 +42,9 @@ html(lang="ko")
                         th name 
                         th frequency 
                 tbody 
-                    tr 
-                        td
-                        td
-                        td
+                    for row in regularData
+                        tr 
+                            td 
+                                a(href=`/users/user-info/${row.UserId}`) #{row.UserId}
+                            td #{row.Name}
+                            td #{row.Frequency}

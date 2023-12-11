@@ -1,5 +1,4 @@
 import express from "express";
-import morgan from "morgan";
 import path from "path";
 import { initDatabase } from "./src/database/initDB.js";
 import { router as userRouter } from "./src/routes/userRoutes.js";

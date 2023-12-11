@@ -2,7 +2,7 @@ doctype html
 html(lang="ko")
     head 
         meta(charset="utf-8")
-        title User information
+        title Order information
         link(rel="stylesheet" type="text/css" href="/static/css/style.css")
     body 
         section.nav-section
@@ -19,5 +19,7 @@ html(lang="ko")
                     tr 
                         td #{orderData.Id}
                         td #{orderData.OrderAt}
-                        td #{orderData.StoreId}
-                        td #{orderData.UserId}
+                        td 
+                            a(href=`/stores/store-info/${orderData.StoreId}`) #{orderData.StoreId}
+                        td 
+                            a(href=`/users/user-info/${orderData.UserId}`) #{orderData.UserId}
