@@ -132,5 +132,5 @@ a {
 
 .revenue-table-container {
     overflow: auto;
-    max-height: 40vh;
+    max-height: 350px;
 }

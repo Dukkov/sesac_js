@@ -35,10 +35,10 @@ html(lang="ko")
                     for row in orderData
                         tr 
                             td 
-                                a(href=`/orders/order-info/${row.OrderId}`) #{row.OrderId}
+                                a(href=`/order-items/order-item-info/${row.OrderId}`) #{row.OrderId}
                             td #{row.OrderAt}
                             td 
-                                a(href=`/orders/order-info/${row.StoreId}`) #{row.StoreId}
+                                a(href=`/stores/store-info/${row.StoreId}`) #{row.StoreId}
             div
                 p 자주 방문한 매장 Top 5
                 ul 
