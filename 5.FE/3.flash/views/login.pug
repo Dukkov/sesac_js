@@ -1,0 +1,47 @@
+doctype html 
+html(lang="ko")
+    head 
+        meta(charset="utf-8")
+        title Login page
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous")
+    body 
+        if successMsg != ""
+            for data in successMsg
+                if data.type === "success"
+                    div.alert.alert-success.alert-dismissible.fade.show #{data.text}
+                        button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
+                else if data.type === "info"
+                    div.alert.alert-info.alert-dismissible.fade.show #{data.text}
+                        button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
+                else if data.type === "warning"
+                    div.alert.alert-warning.alert-dismissible.fade.show #{data.text}
+                        button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
+        else if errorMsg != "" 
+            div.alert.alert-warning #{errorMsg}
+        form(action="/login" method="POST")
+            div.mb-3.col-sm-4.ms-2
+                label.form-label(for="inputId") ID
+                input.form-control(type="text" id="inputId" name="id")
+            div.mb-3.col-sm-4.ms-2
+                label.form-label(for="inputPassword") Password
+                input.form-control(type="password" id="inputPassword" name="password")
+            div.mb-3.col-sm-4.ms-2
+                button.btn.btn-primary(type="submit") Submit
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous")
+        script.
+            const closeFlashMsg = (flashAlert) => {
+                let bsAlert = new bootstrap.Alert(flashAlert);
+                bsAlert.close();
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                let flashAlerts = document.querySelectorAll(".alert");
+
+                if(flashAlerts.length > 0) {
+                    flashAlerts.forEach((flashAlert, index) => {
+                        setTimeout(() => {
+                            closeFlashMsg(flashAlert);
+                        }, 5000 + index * 2000);
+                    });
+                }
+            });
