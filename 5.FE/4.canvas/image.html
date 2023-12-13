@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="textCanvas" width="400" height="400"></canvas>
+        <script>
+            const canvas = document.getElementById("textCanvas");
+            const context = canvas.getContext("2d");
+
+            const player = {
+                x: 170,
+                y: 340,
+                speed: 10
+            };
+
+            const enemy = {
+                x: 150,
+                y: 0,
+                gravity: 3
+            };
+            
+            const image = new Image(60, 60);
+            image.src = "spaceship.png";
+            // image.onload = () => {
+            //     context.drawImage(image, (canvas.width / 2) - (image.width / 2), canvas.height - image.height, image.width, image.height);
+            // };
+
+            const image2 = new Image(60, 60);
+            image2.src = "asteroid.png";
+
+            const draw = () => {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(image, player.x, player.y, 60, 60);
+                context.drawImage(image2, enemy.x, enemy.y, 60, 60);
+
+                enemy.y += enemy.gravity;
+                if (enemy.y > canvas.height) {
+                    enemy.y = 0;
+                    enemy.x = Math.random() * (canvas.width - 60);
+                }
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener("keydown", (ev) => {
+                switch (ev.key) {
+                    case "ArrowLeft":
+                        if (player.x <= 0)
+                            break;
+                        else
+                            player.x -= player.speed;
+                        break;
+                    case "ArrowRight":
+                        if (player.x + image.width >= canvas.width)
+                            break;
+                        else
+                            player.x += player.speed;
+                        break;
+                    case "ArrowUp":
+                        if (player.y <= 0)
+                            break;
+                        else
+                            player.y -= player.speed;
+                        break;
+                    case "ArrowDown":
+                        if (player.y + image.width >= canvas.height)
+                            break;
+                        else
+                            player.y += player.speed;
+                        break;
+                }
+            });
+
+            draw();
+        </script>
+    </body>
+</html>

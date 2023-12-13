@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            rect {
+                fill: steelblue;
+            }
+            text {
+                font-size: 12px;
+                fill: white;
+                text-anchor: middle;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    </head>
+    <body>
+        <script>
+            const dataset = [30, 45, 50, 60, 80];
+
+            const svgWidth = 300;
+            const svgHeight = 150;
+
+            const svg = d3.select("body").append("svg").attr("width", svgWidth).attr("height", svgHeight);
+
+            svg.selectAll("rect")
+                .data(dataset)
+                .enter()
+                .append("rect")
+                .attr("x", (d, i) => i * 60)
+                .attr("y", (d) => svgHeight - d)
+                .attr("width", 50)
+                .attr("height", (d) => d);
+
+            svg.selectAll("text")
+                .data(dataset)
+                .enter()
+                .append("text")
+                .text((d) => d)
+                .attr("x", (d, i) => i * 60 + 25)
+                .attr("y", (d) => svgHeight - d + 15)
+                .attr("text-anchor", "middle");
+        </script>
+    </body>
+</html>

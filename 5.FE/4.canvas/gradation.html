@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="textCanvas" width="400" height="400"></canvas>
+        <script>
+            const canvas = document.getElementById("textCanvas");
+            const context = canvas.getContext("2d");
+            const gradation = context.createLinearGradient(0, 0, canvas.width, 0);
+            
+            gradation.addColorStop(0, "red");
+            gradation.addColorStop(0.5, "violet");
+            gradation.addColorStop(1, "blue");
+            context.fillStyle = gradation;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+        </script>
+    </body>
+</html>

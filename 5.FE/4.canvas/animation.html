@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="textCanvas" width="400" height="400"></canvas>
+        <script>
+            const canvas = document.getElementById("textCanvas");
+            const context = canvas.getContext("2d");
+            let x = 0;
+            let y = 0;
+
+            const draw = () => {
+                context.fillStyle = "blue";
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.fillRect(x, y, 50, 50);
+                x += 5;
+                y += 1;
+
+                if (x > canvas.width)
+                    x = 0;
+                if (y > canvas.height)
+                    y = 0;
+
+                requestAnimationFrame(draw);
+            };
+
+            draw();
+        </script>
+    </body>
+</html>

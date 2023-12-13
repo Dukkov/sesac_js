@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="textCanvas" width="400" height="400"></canvas>
+        <script>
+            const canvas = document.getElementById("textCanvas");
+            const context = canvas.getContext("2d");
+
+            const graphData = {
+                A: 10,
+                B: 20,
+                C: 40,
+                D: 60,
+                E: 100
+            };
+
+            const drawBarGraph = (data) => {
+                const barWidth = 30;
+                let startX = 20;
+
+                for (const key in data) {
+                    const barHeight = data[key];
+
+                    context.fillStyle = "blue";
+                    context.fillRect(startX, 300 - barHeight, barWidth, barHeight);
+
+                    context.fillStyle = "black";
+                    context.fillText(key, startX + barWidth / 2, 310);
+                    startX += 50;
+                }
+            };
+
+            const drawLineGraph = (data) => {
+                context.lineWidth = 2;
+                context.strokeStyle = "red";
+                let startX = 35;
+
+                context.beginPath();
+                
+                for (const key in data) {
+                    const node = data[key];
+                    context.lineTo(startX, 300 - node);
+                    startX += 50;
+                }
+                context.stroke();
+
+                context.closePath();
+            };
+
+            drawBarGraph(graphData);
+            drawLineGraph(graphData);
+        </script>
+    </body>
+</html>
