@@ -1,0 +1,50 @@
+doctype html 
+html(lang="ko")
+    head 
+        meta(charset="utf-8")
+        title Revenue
+        script(src="https://cdn.jsdelivr.net/npm/chart.js")
+    body
+        canvas(id="mixedChart")
+        script.
+            const chartData = !{JSON.stringify(chartData)};
+            const ctx = document.getElementById("mixedChart").getContext("2d");
+            const config = {
+                type: 'scatter',
+                options: {
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: "bottom"
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+            const dataLabel = [];
+            const revenueData = [];
+            for (row of chartData) {
+                dataLabel.push(row.Month);
+                revenueData.push(row.Revenue);
+            }
+            
+            const mixedChart = new Chart(ctx, {
+                data: {
+                    datasets: [{
+                        type: 'bar',
+                        label: 'Revenue',
+                        data: revenueData,
+                        borderWidth: 1
+                    }, {
+                        type: 'line',
+                        label: 'Revenue',
+                        data: revenueData,
+                    }],
+                    labels: dataLabel
+                },
+                options: config
+            });
