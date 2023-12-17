@@ -1,27 +1,60 @@
 import fs from "fs";
 
-// JSON 데이터를 파싱
-const jsonData = JSON.parse(fs.readFileSync("./response2.json", "utf-8"));
-const data = jsonData.contents.stat; // 'contents'와 'stat'는 실제 필요한 배열이 위치한 키를 지정해주세요.
+// JSON 데이터를 파싱하는 함수
+function parseJSONData(filePath) {
+  const jsonData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  return jsonData.contents.stat;
+}
 
-// updnLine 값이 일치하는 데이터를 필터링하여 그룹화
-const groups = data.reduce((acc, cur) => {
-  const key = cur.updnLine;
-  if (!acc[key]) {
-    acc[key] = [];
-  }
-  acc[key].push(cur);
+// 데이터를 그룹화하는 함수
+function groupData(data) {
+  return data.reduce((acc, cur) => {
+    const key = cur.updnLine;
+    if (!acc[key]) {
+      acc[key] = {};
+    }
+    cur.data.forEach(dataItem => {
+      const time = `${dataItem.hh}:${dataItem.mm}`;
+    if (!acc[key][time]) {
+      acc[key][time] = [];
+    }
+    acc[key][time] = acc[key][time].concat(dataItem.congestionCar);
+  });
   return acc;
 }, {});
+}
 
-// 각 그룹에서 시간대별로 congestionCar 값을 비교
-Object.entries(groups).forEach(([key, items]) => {
-  console.log(`updnLine: ${key}`);
-  items.forEach(item => {
-    item.data.forEach(dataItem => {
-      const time = `${dataItem.hh}:${dataItem.mm}`;
-      const avgCongestion = dataItem.congestionCar.reduce((a, b) => a + b, 0) / dataItem.congestionCar.length;
-      console.log(`time: ${time}, average congestion: ${avgCongestion}`);
+// 그룹화된 데이터를 가공하는 함수
+function processGroupedData(groups) {
+  let output = [];
+  Object.entries(groups).forEach(([updnLine, times]) => {
+    Object.entries(times).forEach(([time, cars]) => {
+      let chunks = [];
+      for (let i = 0; i < cars.length; i += 10) {
+        chunks.push(cars.slice(i, i + 10).toString());
+      }
+      output.push({
+        updnLine,
+        time,
+        congestionCar: chunks,
+      });
     });
   });
-});
+  return output;
+}
+
+// 데이터를 파일로 저장하는 함수
+function saveDataToFile(data, filePath) {
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+}
+
+// 메인 함수
+function main(inputFilePath, outputFilePath) {
+  const data = parseJSONData(inputFilePath);
+  const groups = groupData(data);
+  const output = processGroupedData(groups);
+  saveDataToFile(output, outputFilePath);
+}
+
+// 실행
+main("./response2.json", "./output.json");
