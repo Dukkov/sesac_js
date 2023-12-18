@@ -18,7 +18,7 @@ function groupData(data) {
     if (!acc[key][time]) {
       acc[key][time] = [];
     }
-    acc[key][time] = acc[key][time].concat(dataItem.congestionCar);
+    acc[key][time] = acc[key][time].concat(dataItem.getOffCarRate);
   });
   return acc;
 }, {});
@@ -36,7 +36,7 @@ function processGroupedData(groups) {
       output.push({
         updnLine,
         time,
-        congestionCar: chunks,
+        getOffCarRate: chunks,
       });
     });
   });
@@ -57,4 +57,4 @@ function main(inputFilePath, outputFilePath) {
 }
 
 // 실행
-main("./response2.json", "./output.json");
+main("./getOffCar.json", "./getOffTrimmed.json");
