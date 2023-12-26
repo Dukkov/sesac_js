@@ -52,6 +52,7 @@ function saveDataToFile(data, filePath) {
 function main(inputFilePath, outputFilePath) {
   const data = parseJSONData(inputFilePath);
   const groups = groupData(data);
+  console.log(groups);
   const output = processGroupedData(groups);
   saveDataToFile(output, outputFilePath);
 }
