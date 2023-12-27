@@ -4,14 +4,15 @@
     // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
     "version": "0.2.0",
     "configurations": [
+        
         {
             "type": "node",
             "request": "launch",
-            "name": "프로그램 시작",
+            "name": "Debug this file",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "/home/dukkov/a/2.JS/5-2.builtin/treedir.js"
+            "program": "${file}"
         }
     ]
 }
