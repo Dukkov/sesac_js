@@ -5,14 +5,7 @@ dotenv.config();
 
 const connection = mysql.createConnection(process.env.DATABASE_URL);
 
-connection.query(`
-    CREATE TABLE Station (
-        stationName VARCHAR(10) PRIMARY KEY,
-        toPreviousStation INT(2),
-        toNextStation INT(2),
-        stationInfo TEXT,
-        targetInfo TEXT
-    );`, function (err, results) {
+connection.query(`SELECT * FROM station;`, (err, results) => {
     console.log(results);
 });
 
